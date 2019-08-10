@@ -1,41 +1,25 @@
 <template>
   <div class="container">
     <div>
-      <logo />
+      <!-- <logo /> -->
       <h1 class="title">
-        nuxt-project
+        Hideo Kaizuka
       </h1>
       <h2 class="subtitle">
-        My slick Nuxt.js project
+        I'm a developer
       </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      <nav class="glova-nav">
+        <ul class="nav-menu">
+          <li>works</li>
+          <li>blogs</li>
+          <li>about</li>
+        </ul>
+      </nav>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
-export default {
-  components: {
-    Logo
-  }
-}
 </script>
 
 <style>
@@ -54,19 +38,34 @@ export default {
   display: block;
   font-weight: 300;
   font-size: 100px;
-  color: #35495e;
+  color: #000000;
   letter-spacing: 1px;
 }
 
 .subtitle {
   font-weight: 300;
   font-size: 42px;
-  color: #526488;
+  color: #000000;
   word-spacing: 5px;
-  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-bottom: 70px;
 }
 
 .links {
   padding-top: 15px;
+}
+
+ul {
+  list-style: none;
+}
+li {
+  display: inline-block;
+  margin: 0, 50px;
+  letter-spacing: 1px;
+  color: #000000;
+  width: 250px;
+}
+.nav-menu {
+  font-size: 25px;
 }
 </style>

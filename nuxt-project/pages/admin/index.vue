@@ -1,0 +1,11 @@
+<template>
+  <div>
+    <h1>管理画面</h1>
+    <ul>
+      <li>Workの編集へ(画面作成したらリンクも作成)</li>
+      <li>aboutの編集へ(画面作成したらリンクも作成)</li>
+    </ul>
+  </div>
+</template>
+<script>
+</script>

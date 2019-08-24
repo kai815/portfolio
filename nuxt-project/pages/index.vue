@@ -12,7 +12,7 @@
         <ul class="nav-menu home-fadein">
           <li>works</li>
           <li>blogs</li>
-          <li>about</li>
+          <li><nuxt-link to='about'>about</nuxt-link></li>
         </ul>
       </nav>
     </div>
@@ -55,8 +55,8 @@ export default {
       }
     }
     const P5 = require('p5')
-    const test = new P5(script)
-    return test
+    const p5 = new P5(script)
+    return p5
   }
 }
 </script>

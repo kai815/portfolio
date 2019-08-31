@@ -12,7 +12,11 @@
         <ul class="nav-menu home-fadein">
           <li>works</li>
           <li>blogs</li>
-          <li><nuxt-link to='about'>about</nuxt-link></li>
+          <li>
+            <nuxt-link to="about">
+              about
+            </nuxt-link>
+          </li>
         </ul>
       </nav>
     </div>

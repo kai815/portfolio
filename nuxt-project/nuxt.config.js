@@ -1,3 +1,5 @@
+const pkg = require('./package')
+import webpack from 'webpack'
 
 export default {
   mode: 'universal',
@@ -28,6 +30,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: "~plugins/persistedstate.js", ssr: false }
   ],
   // 環境変数
   env:{
@@ -61,6 +64,11 @@ export default {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        '_': 'lodash'
+      })
+    ]
   }
 }

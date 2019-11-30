@@ -1,23 +1,5 @@
-export const strict = false
-
-export const state = () => ({
-  user: null
-})
+import { vuexfireMutations } from 'vuexfire'
 
 export const mutations = {
-  setUser(state, payload) {
-    state.user = payload
-  }
-}
-
-export const actions = {
-  setUser({ commit }, payload) {
-    commit('setUser', payload)
-  }
-}
-
-export const getters = {
-  isAuthenticated(state) {
-    return !!state.user
-  }
+  ...vuexfireMutations
 }

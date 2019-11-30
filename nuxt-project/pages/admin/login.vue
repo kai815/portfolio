@@ -35,16 +35,17 @@ export default {
     }
   },
   computed: {
-    ...mapState(['user']),
-    ...mapGetters(['isAuthenticated'])
+    ...mapState('auth', ['user']),
+    ...mapGetters('auth', ['isAuthenticated'])
   },
   mounted() {
     firebase.auth().onAuthStateChanged((user) => {
-      this.setUser(user)
+      const { uid, email, displayName } = user
+      this.setUser({ uid, email, displayName })
     })
   },
   methods: {
-    ...mapActions(['setUser']),
+    ...mapActions('auth', ['setUser']),
     login() {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password)
         .then((user) => {

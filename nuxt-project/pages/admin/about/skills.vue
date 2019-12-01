@@ -19,22 +19,35 @@
       </form>
     </section>
     <section class="contents">
-      <ul>
-        <li v-for="skill in orderdSkills" :key="skill.id">
-          <span v-if="skill.created">
-            <span>
-              {{ skill.name }} {{ skill.discription }}
-            </span>
-            <button @click="remove(skill.id)">X</button>
-          </span>
-        </li>
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Disciption</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            is="skillsTable"
+            v-for="(skill, index) in skillsData"
+            :key="skill.id"
+            :skill="skill"
+            :index="index"
+          />
+        </tbody>
+      </table>
     </section>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import skillsTable from '~/components/SkillsTable.vue'
+
 export default {
+  components: {
+    skillsTable
+  },
   data() {
     return {
       loaded: false,
@@ -48,18 +61,17 @@ export default {
   },
   computed: {
     ...mapGetters('auth', ['isAuthenticated']),
-    ...mapGetters('skills', ['orderdSkills'])
+    // ...mapGetters('skills', ['orderdSkills'])
+    skillsData() {
+      return this.$store.getters['skills/orderdSkills']
+    }
   },
   created() {
     this.$store.dispatch('skills/init')
   },
   mounted() {
-    /* eslint-disable no-console */
-    console.log('mouted')
     setTimeout(() => {
       if (!this.isAuthenticated) {
-        console.log('notlogin')
-        alert('notlogin')
         // ログインしていなかったら飛ぶページを設定
         this.$router.push('/admin/login')
       }
@@ -73,12 +85,6 @@ export default {
       this.newSkill.discription = ''
       this.newSkill.number = ''
       this.form = false
-    },
-    remove(id) {
-      this.$store.dispatch('skills/remove', id)
-    },
-    toggle(skill) {
-      this.$store.dispatch('skills/toggle', skill)
     },
     showForm() {
       this.form = true

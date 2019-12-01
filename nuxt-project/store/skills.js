@@ -14,37 +14,54 @@ export const actions = {
     bindFirestoreRef('skills', skillsRef)
   }),
   add: firestoreAction((context, skill) => {
-    /* eslint-disable no-console */
-    console.log(skill)
     if (skill.name.trim()) {
-      console.log(skill)
-      // alert('skilladdstore')
       skillsRef.doc().set({
         name: skill.name,
         discription: skill.discription,
         number: skill.number,
         created: firebase.firestore.FieldValue.serverTimestamp()
       }).then((ref) => {
-        console.log(ref)
       }).catch((err) => {
-        console.log(err)
+        alert(err)
       })
     }
   }),
   remove: firestoreAction((context, id) => {
     skillsRef.doc(id).delete()
   }),
-  toggle: firestoreAction((context, skill) => {
+  // toggle: firestoreAction((context, skill) => {
+  //   /* eslint-disable no-console */
+  //   console.log(skill)
+  //   skillsRef.doc(skill.id).update({
+  //     name: skill.name,
+  //     discription: skill.discription
+  //   }).then((ref) => {
+  //   }).catch((err) => {
+  //     alert(err)
+  //   })
+  // })
+  toggleName: firestoreAction((context, skill) => {
+    /* eslint-disable no-console */
     skillsRef.doc(skill.id).update({
-      done: !skill.done
+      name: skill.name
+    }).then((ref) => {
+    }).catch((err) => {
+      alert(err)
+    })
+  }),
+  toggleDiscriptoin: firestoreAction((context, skill) => {
+    /* eslint-disable no-console */
+    skillsRef.doc(skill.id).update({
+      discription: skill.discription
+    }).then((ref) => {
+    }).catch((err) => {
+      alert(err)
     })
   })
 }
 
 export const getters = {
   orderdSkills: (state) => {
-    console.log('getters')
-    console.log(state)
     return _.sortBy(state.skills, 'number')
   }
 }

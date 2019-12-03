@@ -1,11 +1,11 @@
 <template>
   <div class="contents">
     <section class="sec-title">
-      <h1 class="title">
-        About
+      <h1>
+        <span v-for="(t, index) in title" :key="index" :style="{animationDelay: index*150+'ms'}" class="title text-left-in text-shadow" v-text="t" />
       </h1>
       <h2>
-        My skills and personality
+        <span v-for="(st, subindex) in subtitle" :key="st" :style="{animationDelay: subindex*50+'ms'}" class="subtitle text-left-in" v-text="st" />
       </h2>
     </section>
     <section class="sec-contents">
@@ -18,7 +18,7 @@
     </section>
   </div>
 </template>
-<style>
+<style scoped>
 .contents {
   margin: 0 auto;
   min-height: 100vh;
@@ -38,11 +38,11 @@
 
 .subtitle {
   font-weight: 300;
-  font-size: 42px;
+  font-size: 60;
   color: #000000;
   word-spacing: 5px;
-  padding-top: 15px;
-  padding-bottom: 70px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .sec-title {
@@ -50,7 +50,6 @@
   padding: 50px;
   width: 100%;
 }
-
 .sec-contents {
   background-color:white;
   width: 100%;
@@ -58,5 +57,40 @@
 .contents-title {
   text-align: left;
   padding: 10px 0px 10px 50px;
+  font-family: 'Rubik Mono One', sans-serif;
 }
+.text-shadow {
+  text-shadow: 5px 5px 1px #999999, -5px -5px 1px #999999;
+}
+
+@keyframes text-in {
+  0% {
+    transform: translate(-150px, 0px);
+    opacity: 0;
+  }
+}
+
+.text-left-in {
+  display: inline-block;
+  min-width: 0.3em;
+  animation: text-in 0.8s cubic-bezier(0.22, 0.15, 0.25, 1.43) 0s backwards;
+}
+
+/* 共通に入れておきたい */
+/* .css-br::after {
+  content: "\A" ;
+  white-space: pre;
+} */
+
 </style>
+<script>
+export default {
+  data() {
+    return {
+      title: 'About',
+      subtitle: 'My skills and personality'
+    }
+  }
+
+}
+</script>

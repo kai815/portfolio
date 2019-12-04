@@ -2,16 +2,17 @@
   <div class="contents">
     <section class="sec-title">
       <h1>
-        <span v-for="(t, index) in title" :key="index" :style="{animationDelay: index*150+'ms'}" class="title text-left-in text-shadow" v-text="t" />
+        <span v-for="(t, index) in title" :key="t" :style="{animationDelay: index*150+'ms'}" class="title text-left-in text-shadow" v-text="t" />
       </h1>
       <h2>
-        <span v-for="(st, subindex) in subtitle" :key="st" :style="{animationDelay: subindex*50+'ms'}" class="subtitle text-left-in" v-text="st" />
+        <span v-for="(st, subindex) in subtitle" :key="subindex" :style="{animationDelay: subindex*50+'ms'}" class="subtitle text-left-in" v-text="st" />
       </h2>
     </section>
     <section class="sec-contents">
       <h2 class="contents-title">
         Skills
       </h2>
+      <span is="AboutSkills" v-for="skill in skills" :key="skill.id" :skill="skill" />
       <h2 class="contents-title">
         Personality
       </h2>
@@ -76,21 +77,23 @@
   animation: text-in 0.8s cubic-bezier(0.22, 0.15, 0.25, 1.43) 0s backwards;
 }
 
-/* 共通に入れておきたい */
-/* .css-br::after {
-  content: "\A" ;
-  white-space: pre;
-} */
-
 </style>
 <script>
+import AboutSkills from '~/components/AboutSkills.vue'
 export default {
+  components: {
+    AboutSkills
+  },
   data() {
     return {
       title: 'About',
       subtitle: 'My skills and personality'
     }
+  },
+  computed: {
+    skills() {
+      return this.$store.getters['skills/orderdSkills']
+    }
   }
-
 }
 </script>

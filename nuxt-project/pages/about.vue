@@ -58,7 +58,6 @@
 .contents-title {
   text-align: left;
   padding: 10px 0px 10px 50px;
-  font-family: 'Rubik Mono One', sans-serif;
 }
 .text-shadow {
   text-shadow: 5px 5px 1px #999999, -5px -5px 1px #999999;

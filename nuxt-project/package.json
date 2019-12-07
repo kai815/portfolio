@@ -17,6 +17,7 @@
     "firebase": "^6.4.2",
     "nuxt": "^2.0.0",
     "p5": "^0.9.0",
+    "vue-typer": "^1.2.0",
     "vuex": "^3.1.2",
     "vuex-persistedstate": "^2.7.0",
     "vuexfire": "^3.2.0-alpha.0"

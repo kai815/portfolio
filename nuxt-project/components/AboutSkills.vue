@@ -1,6 +1,6 @@
 <template>
   <div class="display-inline">
-    <span class="skill-discription" @mouseover="changeShowDiscription" @mouseout="changeShowDiscription">
+    <span class="skill-discription slide-in-to-top" @mouseover="changeShowDiscription" @mouseout="changeShowDiscription">
       {{ skill.name }}/
     </span>
     <div v-if="showDiscription" class="skill-discription-box skill-discription-box-text" >
@@ -28,6 +28,13 @@ export default {
 }
 </script>
 <style scoped>
+@keyframes slide-in-to-top {
+  0% {
+    transform: translate(0px, -50px);
+    opacity: 0;
+  }
+}
+
 .display-inline {
   display:inline;
 }
@@ -58,5 +65,8 @@ export default {
   word-spacing: 2px;
   text-align: left;
   font-family: hk, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, メイリオ, sans-serif;
+}
+.slide-in-to-top {
+  animation: slide-in-to-top 3s ease 2s backwards;
 }
 </style>

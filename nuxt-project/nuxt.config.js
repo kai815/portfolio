@@ -30,7 +30,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: "~plugins/persistedstate.js", ssr: false }
+    { src: "~plugins/persistedstate.js", ssr: false },
+    { src: '~plugins/vuetyper.js', ssr: false }
   ],
   // 環境変数
   env:{

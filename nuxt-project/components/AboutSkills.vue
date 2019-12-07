@@ -4,8 +4,8 @@
       {{ skill.name }}/
     </span>
     <div v-if="showDiscription" class="skill-discription-box skill-discription-box-text" >
-      <span class="typing">
-        {{ skill.discription }}
+      <span>
+        <vue-typer :text="skill.discription" :type-delay='65'></vue-typer>
       </span>
     </div>
   </div>
@@ -33,18 +33,18 @@ export default {
 }
 .skill-discription {
   font-size: 3ex;
-  color: #161515;
+  color: #0e0d0d;
   word-spacing: 2px;
 }
 .skill-discription:hover{
-  text-shadow: 2px 2px 1px #999999, -5px -5px 1px #999999;
+  text-shadow: 5px 5px 2px #999999;
   font-size: 4ex;
 }
 .skill-discription-box {
   display: block;
-  border-radius: 5px;
-  border: groove 2px #161515;
+  padding: 2px;
   width: 90%;
+  border: solid black 1px;
   left: 0;
   right: 0;
   margin: 10px auto;
@@ -52,9 +52,11 @@ export default {
   bottom: 0;
 }
 .skill-discription-box-text {
-  font-size: 3ex;
-  color: #161515;
+  font-size: 2ex;
+  font-weight: bald;
+  color: #635c5c;
   word-spacing: 2px;
   text-align: left;
+  font-family: hk, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, メイリオ, sans-serif;
 }
 </style>

@@ -47,10 +47,10 @@ export default {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
-  font-weight: 300;
+  font-weight: 350;
   font-size: 100px;
   color: #000000;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .subtitle {
@@ -58,7 +58,7 @@ export default {
   font-size: 42px;
   color: #000000;
   word-spacing: 5px;
-  padding-top: 15px;
+  padding-top: 8px;
   padding-bottom: 70px;
 }
 

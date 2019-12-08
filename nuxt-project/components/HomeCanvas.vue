@@ -16,7 +16,11 @@ export default {
         // ライトの設定。マウスの位置で光の方向が変化
         const locY = (p5.mouseY / p5.height - 0.5) * (-2)
         const locX = (p5.mouseX / p5.width - 0.5) * 2
-        p5.ambientLight(100, 80, 80)
+        // 色
+        const ran1 = Math.floor(Math.random() * Math.floor(255))
+        const ran2 = Math.floor(Math.random() * Math.floor(255))
+        const ran3 = Math.floor(Math.random() * Math.floor(255))
+        p5.ambientLight(ran1, ran2, ran3)
         p5.pointLight(200, 200, 200, locX, locY, 0)
         // Yを少しずつ回転。
         p5.rotateY(p5.frameCount * 0.0001)
@@ -29,7 +33,7 @@ export default {
             p5.rotateZ(p5.frameCount * 0.002)
             p5.push()
             // プリミティブの作成
-            p5.sphere(2, 10, 100)
+            p5.sphere(0.5, 10, 100)
             p5.pop()
           }
           p5.pop()

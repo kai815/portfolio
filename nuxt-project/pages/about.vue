@@ -1,8 +1,8 @@
 <template>
   <div class="contents">
-    <section class="sec-title title-slide-in-top">
+    <section class="sec-title title-slide-in-top title-under-line">
       <h1>
-        <span v-for="(t, index) in title" :key="t" :style="{animationDelay: index*150+'ms'}" class="title text-left-in text-shadow" v-text="t" />
+        <span v-for="(t, index) in title" :key="t" :style="{animationDelay: index*150+'ms'}" class="title text-left-in" v-text="t" />
       </h1>
       <h2>
         <span v-for="(st, subindex) in subtitle" :key="subindex" :style="{animationDelay: subindex*50+'ms'}" class="subtitle text-left-in" v-text="st" />
@@ -12,15 +12,27 @@
       <h2 class="contents-title slide-in-left">
         Skills
       </h2>
-      <span
-        is="AboutSkills"
-        v-for="skill in skills"
-        :key="skill.id"
-        :skill="skill"
+      <div class="skill-contents">
+        <div
+          is="AboutSkills"
+          v-for="skill in skills"
+          :key="skill.id"
+          :skill="skill"
+          @showDiscription="showSkillDiscription($event)"
+          @hideDiscription="hideSkillDiscription()"
         />
+      </div>
+      <div v-if="statusSkillDiscription" class="personality-contents" >
+        <span>
+          <vue-typer :text="skillDisciption" :type-delay='65'></vue-typer>
+        </span>
+      </div>
       <h2 class="contents-title slide-in-left">
         Personality
       </h2>
+      <div class="personality-contents slide-in-to-top">
+        <span>{{ personality }}</span>
+      </div>
     </section>
   </div>
 </template>
@@ -50,7 +62,6 @@
     transform: translateX(0);
   }
 }
-
 .contents {
   margin: 0 auto;
   min-height: 100vh;
@@ -59,8 +70,6 @@
   text-align: center;
 }
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
@@ -78,12 +87,10 @@
 }
 
 .sec-title {
-  background-color:rgb(226, 222, 222);
   padding: 50px;
   width: 100%;
 }
 .sec-contents {
-  background-color:white;
   width: 100%;
 }
 .contents-title {
@@ -111,6 +118,27 @@
 .slide-in-left-after {
   animation: slide-in-to-left 1s ease 2s backwards;
 }
+
+.skill-contents {
+  display: flex;
+  width: 100%;
+  padding: 10px 10px 10px 50px;
+}
+
+.personality-contents {
+  width: 100%;
+  padding: 10px 10px 10px 50px;
+  text-align: left;
+}
+
+.slide-in-to-top {
+  animation: slide-in-to-top 3s ease 1s backwards;
+}
+
+.title-under-line {
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 1px 0 rgba(255,255,255,1);
+}
 </style>
 <script>
 import AboutSkills from '~/components/AboutSkills.vue'
@@ -121,12 +149,24 @@ export default {
   data() {
     return {
       title: 'About',
-      subtitle: 'My skills and personality'
+      subtitle: 'My skills and personality',
+      statusSkillDiscription: false,
+      skillDisciption: '',
+      personality: '営業職・Webライターを経て2018年2月よりWebエンジニアとして働き始める。1社目で働いた会社ではサーバサイドからフロントエンドまで幅広く開発に携わる。特にサービスやWebサイトの見た目をいじるのが好きで、フロントエンド開発、さらにはUI/UXデザインに興味がある。'
     }
   },
   computed: {
     skills() {
       return this.$store.getters['skills/orderdSkills']
+    }
+  },
+  methods: {
+    showSkillDiscription(discription) {
+      this.statusSkillDiscription = true
+      this.skillDisciption = discription
+    },
+    hideSkillDiscription() {
+      this.statusSkillDiscription = false
     }
   }
 }

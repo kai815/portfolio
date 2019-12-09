@@ -1,13 +1,8 @@
 <template>
   <div class="display-inline">
-    <span class="skill-discription slide-in-to-top" @mouseover="changeShowDiscription" @mouseout="changeShowDiscription">
+    <span class="skill-discription slide-in-to-top" @mouseover="showDiscription" @mouseout="hideDiscription">
       {{ skill.name }}/
     </span>
-    <div v-if="showDiscription" class="skill-discription-box skill-discription-box-text" >
-      <span>
-        <vue-typer :text="skill.discription" :type-delay='65'></vue-typer>
-      </span>
-    </div>
   </div>
 </template>
 <script>
@@ -15,14 +10,12 @@ export default {
   props: {
     skill: Object
   },
-  data() {
-    return {
-      showDiscription: false
-    }
-  },
   methods: {
-    changeShowDiscription() {
-      this.showDiscription = !this.showDiscription
+    showDiscription() {
+      this.$emit('showDiscription', this.skill.discription)
+    },
+    hideDiscription() {
+      this.$emit('hideDiscription')
     }
   }
 }
@@ -35,13 +28,11 @@ export default {
   }
 }
 
-.display-inline {
-  display:inline;
-}
 .skill-discription {
   font-size: 3ex;
   color: #0e0d0d;
   word-spacing: 2px;
+  margin:20px 0px;
 }
 .skill-discription:hover{
   text-shadow: 5px 5px 2px #999999;
@@ -49,14 +40,16 @@ export default {
 }
 .skill-discription-box {
   display: block;
-  padding: 2px;
+  padding: 3px;
   width: 90%;
-  border: solid black 1px;
+  border: 1px solid #EEE;
+  background-color: #EEE;
+  box-shadow: 1px 1px 2px #EEE;
   left: 0;
   right: 0;
   margin: 10px auto;
   position: absolute;
-  bottom: 0;
+  bottom:
 }
 .skill-discription-box-text {
   font-size: 2ex;
@@ -64,9 +57,9 @@ export default {
   color: #635c5c;
   word-spacing: 2px;
   text-align: left;
-  font-family: hk, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, メイリオ, sans-serif;
 }
 .slide-in-to-top {
-  animation: slide-in-to-top 3s ease 2s backwards;
+  animation: slide-in-to-top 3s ease 1s backwards;
 }
+
 </style>

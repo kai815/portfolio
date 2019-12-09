@@ -38,26 +38,7 @@ export default {
   text-shadow: 5px 5px 2px #999999;
   font-size: 4ex;
 }
-.skill-discription-box {
-  display: block;
-  padding: 3px;
-  width: 90%;
-  border: 1px solid #EEE;
-  background-color: #EEE;
-  box-shadow: 1px 1px 2px #EEE;
-  left: 0;
-  right: 0;
-  margin: 10px auto;
-  position: absolute;
-  bottom:
-}
-.skill-discription-box-text {
-  font-size: 2ex;
-  font-weight: bald;
-  color: #635c5c;
-  word-spacing: 2px;
-  text-align: left;
-}
+
 .slide-in-to-top {
   animation: slide-in-to-top 3s ease 1s backwards;
 }

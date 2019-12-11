@@ -2,47 +2,30 @@
   <div class="container">
     <div id="p5Canvas">
       <HomeCanvas />
+      <Header />
       <h1 class="title home-fadein">
         Hideo Kaizuka
       </h1>
       <h2 class="subtitle home-fadein">
         I'm a developer
       </h2>
-      <nav class="gloval-nav">
-        <ul class="nav-menu home-fadein">
-          <li>works</li>
-          <li>blogs</li>
-          <li>
-            <nuxt-link to="about">
-              about
-            </nuxt-link>
-          </li>
-        </ul>
-      </nav>
     </div>
   </div>
 </template>
 
 <script>
 import HomeCanvas from '~/components/HomeCanvas.vue'
+import Header from '~/components/Header.vue'
 
 export default {
   components: {
-    HomeCanvas
+    HomeCanvas,
+    Header
   }
 }
 </script>
 
 <style scoped>
-a {
-  color: inherit;
-  text-decoration: none;
-}
-a:visited {
-  color: inherit;
-  text-decoration: none;
-}
-
 .container {
   margin: 0 auto;
   min-height: 100vh;
@@ -73,16 +56,6 @@ a:visited {
   padding-top: 15px;
 }
 
-ul {
-  list-style: none;
-}
-li {
-  display: inline-block;
-  margin: 0, 50px;
-  letter-spacing: 1px;
-  color: #000000;
-  width: 250px;
-}
 .nav-menu {
   font-size: 25px;
 }

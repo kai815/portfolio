@@ -1,5 +1,6 @@
 <template>
   <div class="contents">
+    <Header />
     <section class="sec-title title-slide-in-top title-under-line">
       <h1>
         <span v-for="(t, index) in title" :key="t" :style="{animationDelay: index*150+'ms'}" class="title text-left-in" v-text="t" />
@@ -142,9 +143,12 @@
 </style>
 <script>
 import AboutSkills from '~/components/AboutSkills.vue'
+import Header from '~/components/Header.vue'
+
 export default {
   components: {
-    AboutSkills
+    AboutSkills,
+    Header
   },
   data() {
     return {
@@ -152,7 +156,7 @@ export default {
       subtitle: 'My skills and personality',
       statusSkillDiscription: false,
       skillDisciption: '',
-      personality: '営業職・Webライターを経て2018年2月よりWebエンジニアとして働き始める。1社目で働いた会社ではサーバサイドからフロントエンドまで幅広く開発に携わる。特にサービスやWebサイトの見た目をいじるのが好きで、フロントエンド開発、さらにはUI/UXデザインに興味がある。'
+      personality: '営業職・Webライターを経て2018年2月よりWebエンジニアとして働き始める。1社目で働いた会社ではサーバサイドからフロントエンドまで幅広く開発に携わる。現在は特にサービスやWebサイトの見た目をいじるのが好きで、フロントエンド開発、さらにはUI/UXデザインに興味がある。'
     }
   },
   computed: {

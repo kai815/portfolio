@@ -2,11 +2,11 @@
   <div class="contents">
     <Header />
     <section class="sec-title title-slide-in-top title-under-line">
-      <h1>
-        <span v-for="(t, index) in title" :key="t" :style="{animationDelay: index*150+'ms'}" class="title text-left-in" v-text="t" />
+      <h1 class="title">
+        <span v-for="(t, index) in title" :key="t" :style="{animationDelay: index*150+'ms'}" class="title-text text-left-in" v-text="t" />
       </h1>
-      <h2>
-        <span v-for="(st, subindex) in subtitle" :key="subindex" :style="{animationDelay: subindex*50+'ms'}" class="subtitle text-left-in" v-text="st" />
+      <h2 class="subtitle">
+        <span v-for="(st, subindex) in subtitle" :key="subindex" :style="{animationDelay: subindex*50+'ms'}" class="subtitle-text text-left-in" v-text="st" />
       </h2>
     </section>
     <section class="sec-contents">
@@ -72,23 +72,47 @@
 }
 .title {
   display: block;
-  font-weight: 300;
-  font-size: 100px;
+  width: 100%;
+}
+
+.title-text {
+  font-weight: 500;
+  font-size: 12.5vh;
   color: #000000;
   letter-spacing: 1px;
 }
+/* タブレット or 狭目のブラウザ*/
+@media (max-width: 1030px) and (min-width: 768px) {
+  .title-text{font-size: 10vh}
+}
+/* スマホ時 */
+@media (max-width: 767px) {
+  .title-text{font-size: 8vh}
+}
 
 .subtitle {
-  font-weight: 300;
-  font-size: 60;
-  color: #000000;
-  word-spacing: 5px;
+  display: block;
+  width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
+.subtitle-text {
+  font-weight: 400;
+  font-size: 4vh;
+  color: #000000;
+}
+/* タブレット or 狭目のブラウザ*/
+@media (max-width: 1030px) and (min-width: 768px) {
+  .subtitle-text{font-size: 3.5vh}
+}
+/* スマホ時 */
+@media (max-width: 767px) {
+  .subtitle-text{font-size: 2.2vh}
+}
+
 .sec-title {
-  padding: 50px;
+  padding: 100px 30px;
   width: 100%;
 }
 .sec-contents {
@@ -96,7 +120,17 @@
 }
 .contents-title {
   text-align: left;
-  padding: 10px 0px 10px 50px;
+  padding: 10px 50px;
+  font-size: 6vh;
+}
+
+/* タブレット or 狭目のブラウザ*/
+@media (max-width: 1030px) and (min-width: 768px) {
+  .contents-title{font-size: 5vh}
+}
+/* スマホ時 */
+@media (max-width: 767px) {
+  .contents-title{font-size: 3.5vh}
 }
 .text-shadow {
   text-shadow: 5px 5px 1px #999999, -5px -5px 1px #999999;
@@ -122,13 +156,14 @@
 
 .skill-contents {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
-  padding: 10px 10px 10px 50px;
+  padding: 10px 50px;
 }
 
 .personality-contents {
   width: 100%;
-  padding: 10px 10px 10px 50px;
+  padding: 10px 50px;
   text-align: left;
 }
 
@@ -143,12 +178,10 @@
 </style>
 <script>
 import AboutSkills from '~/components/AboutSkills.vue'
-import Header from '~/components/Header.vue'
 
 export default {
   components: {
-    AboutSkills,
-    Header
+    AboutSkills
   },
   data() {
     return {

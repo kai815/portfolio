@@ -2,7 +2,6 @@
   <div class="container">
     <div id="p5Canvas">
       <HomeCanvas />
-      <Header />
       <h1 class="title home-fadein">
         Hideo Kaizuka
       </h1>
@@ -15,12 +14,10 @@
 
 <script>
 import HomeCanvas from '~/components/HomeCanvas.vue'
-import Header from '~/components/Header.vue'
 
 export default {
   components: {
-    HomeCanvas,
-    Header
+    HomeCanvas
   }
 }
 </script>
@@ -38,19 +35,33 @@ export default {
 .title {
   display: block;
   font-weight: 350;
-  font-size: 100px;
+  font-size: 12vh;
   color: #000000;
   letter-spacing: 0.5px;
 }
 
+/* タブレット or 狭目のブラウザ*/
+@media (max-width: 1030px) and (min-width: 768px) {
+  .title{font-size: 9vh}
+}
+/* スマホ時 */
+@media (max-width: 767px) {
+  .title{font-size: 5vh}
+}
 .subtitle {
   font-weight: 300;
-  font-size: 42px;
+  font-size: 6vh;
   color: #000000;
   word-spacing: 5px;
   padding-top: 8px;
   padding-bottom: 70px;
 }
+
+/* タブレット or 狭目のブラウザorスマホ*/
+@media (max-width: 1030px) {
+  .subtitle{font-size: 4vh}
+}
+
 
 .links {
   padding-top: 15px;

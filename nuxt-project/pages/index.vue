@@ -57,11 +57,11 @@ export default {
   padding-bottom: 70px;
 }
 
+/* タブレット or 狭目のブラウザorスマホ*/
 @media (max-width: 1030px) {
   .subtitle{font-size: 4vh}
 }
-/* スマホ時・タブレット
-サブタイトルはfont-size: 4vh; */
+
 
 .links {
   padding-top: 15px;

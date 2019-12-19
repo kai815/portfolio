@@ -62,7 +62,6 @@ export default {
   .subtitle{font-size: 4vh}
 }
 
-
 .links {
   padding-top: 15px;
 }

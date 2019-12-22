@@ -30,7 +30,7 @@
         <tbody>
           <tr
             is="skillsTable"
-            v-for="(skill, index) in skillsData"
+            v-for="(skill, index) in orderdSkills"
             :key="skill.id"
             :skill="skill"
             :index="index"
@@ -61,10 +61,7 @@ export default {
   },
   computed: {
     ...mapGetters('auth', ['isAuthenticated']),
-    // ...mapGetters('skills', ['orderdSkills'])
-    skillsData() {
-      return this.$store.getters['skills/orderdSkills']
-    }
+    ...mapGetters('skills', ['orderdSkills'])
   },
   created() {
     this.$store.dispatch('skills/init')

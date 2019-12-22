@@ -16,7 +16,7 @@
       <div class="skill-contents">
         <div
           is="AboutSkills"
-          v-for="skill in skills"
+          v-for="skill in orderdSkills"
           :key="skill.id"
           :skill="skill"
           @showDiscription="showSkillDiscription($event)"
@@ -177,6 +177,7 @@
 }
 </style>
 <script>
+import { mapGetters } from 'vuex'
 import AboutSkills from '~/components/AboutSkills.vue'
 
 export default {
@@ -192,10 +193,11 @@ export default {
       personality: '営業職・Webライターを経て2018年2月よりWebエンジニアとして働き始める。1社目で働いた会社ではサーバサイドからフロントエンドまで幅広く開発に携わる。現在は特にサービスやWebサイトの見た目をいじるのが好きで、フロントエンド開発、さらにはUI/UXデザインに興味がある。'
     }
   },
+  created() {
+    this.$store.dispatch('skills/init')
+  },
   computed: {
-    skills() {
-      return this.$store.getters['skills/orderdSkills']
-    }
+    ...mapGetters('skills', ['orderdSkills'])
   },
   methods: {
     showSkillDiscription(discription) {

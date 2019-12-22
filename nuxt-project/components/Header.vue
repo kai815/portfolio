@@ -4,7 +4,10 @@
       <div class="header-nav-label fixed" @click="openNavigation">
         <font-awesome-icon class="fa-2x" icon="bars"/>
       </div>
-      <nav class="nav fixed" :class="{ 'nav-open' : navigationOpen }">
+      <nav class="nav fixed" :class="{ 'nav-open' : navigationOpen }" >
+        <div class="close-icon" :class="{ 'fixed' : navigationOpen }" @click="closeNavigation">
+          <font-awesome-icon class="fa-1x" icon="times"/>
+        </div>
         <ul>
           <li class="nav__item" @click="closeNavigation">
             <nuxt-link to="/" >
@@ -73,6 +76,9 @@ li {
   font-weight: 500;
   font-size: 4vh
 }
+.close-icon {
+  display: none;
+}
 
 /* スマホ時 */
 @media (max-width: 767px) {
@@ -99,7 +105,7 @@ li {
     right: auto;
     left: auto;
     bottom: auto;
-    position: absolute;
+    position: fixed;
   }
   .nav-open > ul {
     height: 100%;
@@ -107,6 +113,11 @@ li {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  .close-icon {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
   }
 
 }

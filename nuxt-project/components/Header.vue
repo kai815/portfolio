@@ -2,7 +2,7 @@
   <div class="header-nav">
     <header>
       <div class="header-nav-label fixed" @click="openNavigation">
-        menu
+        <font-awesome-icon class="fa-2x" icon="bars"/>
       </div>
       <nav class="nav fixed" :class="{ 'nav-open' : navigationOpen }">
         <ul>
@@ -82,7 +82,6 @@ li {
     cursor: pointer;
     display: block;
     padding: 10px;
-    background:#EEE;
   }
   .nav {
     top: -130px;
@@ -133,7 +132,7 @@ export default {
     closeNavigation() {
       setTimeout(function () {
         this.navigationOpen = false
-      }.bind(this), 50)
+      }.bind(this), 10)
     }
   }
 }

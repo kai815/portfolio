@@ -34,6 +34,12 @@
       <div class="personality-contents slide-in-to-top">
         <span>{{ personality }}</span>
       </div>
+      <h2 class="contents-title slide-in-left">
+        Contact
+      </h2>
+      <div class="contact-contents slide-in-to-top">
+        <Contact />
+      </div>
     </section>
   </div>
 </template>
@@ -120,7 +126,7 @@
 }
 .contents-title {
   text-align: left;
-  padding: 10px 50px;
+  padding: 10px 50px 5px 50px;
   font-size: 6vh;
 }
 
@@ -158,13 +164,15 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  padding: 10px 50px;
+  padding: 5px 50px;
+  margin-bottom: 20px;
 }
 
 .personality-contents {
   width: 100%;
-  padding: 10px 50px;
+  padding: 5px 50px;
   text-align: left;
+  margin-bottom: 20px;
 }
 
 .slide-in-to-top {
@@ -175,14 +183,23 @@
   border: 1px solid rgba(0,0,0,0.1);
   box-shadow: 0 1px 0 rgba(255,255,255,1);
 }
+
+.contact-contents {
+  width: 100%;
+  padding: 5px 50px;
+  text-align: left;
+  margin-bottom: 20px;
+}
 </style>
 <script>
 import { mapGetters } from 'vuex'
 import AboutSkills from '~/components/AboutSkills.vue'
+import Contact from '~/components/Contact.vue'
 
 export default {
   components: {
-    AboutSkills
+    AboutSkills,
+    Contact
   },
   data() {
     return {

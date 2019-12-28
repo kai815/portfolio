@@ -2,7 +2,7 @@
   <div class="header-nav">
     <header>
       <div class="header-nav-label fixed" @click="openNavigation">
-        <font-awesome-icon class="fa-2x" icon="bars"/>
+        <font-awesome-icon class="fa-2x" :icon="['fas', 'bars']"/>
       </div>
       <nav class="nav fixed" :class="{ 'nav-open' : navigationOpen }" >
         <div class="close-icon" :class="{ 'fixed' : navigationOpen }" @click="closeNavigation">

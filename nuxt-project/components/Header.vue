@@ -19,6 +19,11 @@
               About
             </nuxt-link>
           </li>
+          <li class="nav__item" @click="closeNavigation">
+            <nuxt-link to="works">
+              Works
+            </nuxt-link>
+          </li>
         </ul>
       </nav>
     </header>

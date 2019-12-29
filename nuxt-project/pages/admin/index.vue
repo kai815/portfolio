@@ -2,7 +2,11 @@
   <div>
     <h1>管理画面</h1>
     <ul>
-      <li>Workの編集へ(画面作成したらリンクも作成)</li>
+      <li>
+        <nuxt-link to="/admin/work/">
+          Workの編集へ
+        </nuxt-link>
+      </li>
       <li>
         <nuxt-link to="/admin/about/">
           aboutの編集へ

@@ -15,12 +15,12 @@
             </nuxt-link>
           </li>
           <li class="nav__item" @click="closeNavigation">
-            <nuxt-link to="about">
+            <nuxt-link to="/about">
               About
             </nuxt-link>
           </li>
           <li class="nav__item" @click="closeNavigation">
-            <nuxt-link to="works">
+            <nuxt-link to="/works">
               Works
             </nuxt-link>
           </li>

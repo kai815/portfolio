@@ -11,8 +11,13 @@ export const state = () => ({
 })
 
 export const actions = {
-  init: firestoreAction(({ bindFirestoreRef }) => {
+  getAll: firestoreAction(({ bindFirestoreRef }) => {
     bindFirestoreRef('works', worksRef)
+  }),
+  serchWorkNumber: firestoreAction(({ bindFirestoreRef }, number) => {
+    /* eslint-disable no-console */
+    console.log(number)
+    bindFirestoreRef('works', worksRef.where('number', '==', number))
   }),
   add: firestoreAction((context, work) => {
     if (work.title.trim()) {
@@ -80,6 +85,8 @@ export const actions = {
 
 export const getters = {
   orderdWorks: (state) => {
+    /* eslint-disable no-console */
+    // console.log(state)
     return _.sortBy(state.works, 'number')
   }
 }

@@ -199,8 +199,8 @@ export default {
   computed: {
     work() {
       /* eslint-disable no-console */
-      console.log('work')
-      console.log(this.orderdWorks)
+      // console.log('work')
+      // console.log(this.orderdWorks)
       return this.orderdWorks.find(w => w.number === this.$route.params.number)
     },
     ...mapGetters('works', ['orderdWorks'])

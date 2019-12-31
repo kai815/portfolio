@@ -11,17 +11,25 @@
     </section>
     <section class="sec-contents">
       <h2 class="contents-title slide-in-left">
-        Works
+        {{ title }}
       </h2>
       <div class="works-contents slide-in-to-top">
-          <div class="work-item" v-for="work in orderdWorks" :key="work.id">
+            <nuxt-link class="work-item" v-for="work in orderdWorks" :key="work.id" :to="`works/${work.number}`">
               <img :src="work.imageUrl">
-          </div>
+              <div class="work-item-mask">
+                >>View More ...
+              </div>
+              <span>{{ work.title }}</span>
+            </nuxt-link>
       </div>
     </section>
   </div>
 </template>
 <style scoped>
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
 @keyframes text-in {
   0% {
@@ -158,12 +166,10 @@
 
 .work-item {
     width: 33%;
+    position: relative;
     border: 1px solid rgba(0,0,0,0.1);
     margin: 10px 10px 0px 0px;
-}
-
-.work-item:hover {
-    opacity:0.1;
+    text-align: left;
 }
 
 @media (max-width: 767px) {
@@ -175,6 +181,31 @@
 .work-item > img {
     width: 100%;
     height: 100%;
+}
+.work-item > a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.work-item-mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  color: #fff;
+  padding-top: 25%;
+  text-align: center;
+  font-weight: 800;
+}
+
+.work-item:hover .work-item-mask{
+    opacity:1;
 }
 </style>
 <script>
@@ -188,7 +219,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('works/init')
+    this.$store.dispatch('works/getAll')
   },
   computed: {
     ...mapGetters('works', ['orderdWorks'])

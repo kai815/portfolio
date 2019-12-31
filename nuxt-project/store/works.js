@@ -11,8 +11,13 @@ export const state = () => ({
 })
 
 export const actions = {
-  init: firestoreAction(({ bindFirestoreRef }) => {
+  getAll: firestoreAction(({ bindFirestoreRef }) => {
     bindFirestoreRef('works', worksRef)
+  }),
+  serchWorkNumber: firestoreAction(({ bindFirestoreRef }, number) => {
+    /* eslint-disable no-console */
+    // console.log(number)
+    bindFirestoreRef('works', worksRef.where('number', '==', number))
   }),
   add: firestoreAction((context, work) => {
     if (work.title.trim()) {
@@ -73,13 +78,15 @@ export const actions = {
     /* eslint-disable no-console */
     const storageRef = storage.ref().child('works/' + image.name)
     storageRef.put(image).then(function (snapshot) {
-      console.log('Uploaded a blob or file!')
+      // console.log('Uploaded a blob or file!')
     })
   }
 }
 
 export const getters = {
   orderdWorks: (state) => {
+    /* eslint-disable no-console */
+    // console.log(state)
     return _.sortBy(state.works, 'number')
   }
 }

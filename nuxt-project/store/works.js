@@ -16,7 +16,7 @@ export const actions = {
   }),
   serchWorkNumber: firestoreAction(({ bindFirestoreRef }, number) => {
     /* eslint-disable no-console */
-    console.log(number)
+    // console.log(number)
     bindFirestoreRef('works', worksRef.where('number', '==', number))
   }),
   add: firestoreAction((context, work) => {
@@ -78,7 +78,7 @@ export const actions = {
     /* eslint-disable no-console */
     const storageRef = storage.ref().child('works/' + image.name)
     storageRef.put(image).then(function (snapshot) {
-      console.log('Uploaded a blob or file!')
+      // console.log('Uploaded a blob or file!')
     })
   }
 }

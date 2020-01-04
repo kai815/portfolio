@@ -11,6 +11,15 @@
     </section>
     <section class="sec-contents">
       <h2 class="contents-title slide-in-left">
+        Personality
+      </h2>
+      <div class="personality-contents slide-in-to-top">
+        <img src="https://firebasestorage.googleapis.com/v0/b/my-portfolio-60bc9.appspot.com/o/about%2Fhideo.jpg?alt=media&token=a78d4f93-d9f8-4053-abce-08b0d852b2d4">
+      </div>
+      <div class="personality-contents slide-in-to-top">
+        <span>{{ personality }}</span>
+      </div>
+      <h2 class="contents-title slide-in-left">
         Skills
       </h2>
       <div class="skill-contents">
@@ -27,12 +36,6 @@
         <span>
           <vue-typer :text="skillDisciption" :type-delay='65'></vue-typer>
         </span>
-      </div>
-      <h2 class="contents-title slide-in-left">
-        Personality
-      </h2>
-      <div class="personality-contents slide-in-to-top">
-        <span>{{ personality }}</span>
       </div>
       <h2 class="contents-title slide-in-left">
         Contact
@@ -173,6 +176,18 @@
   padding: 5px 50px;
   text-align: left;
   margin-bottom: 20px;
+}
+
+.personality-contents > img {
+  width: 50%;
+  height: auto;
+}
+/* スマホ時 */
+@media (max-width: 767px) {
+  .personality-contents > img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .slide-in-to-top {

@@ -15,9 +15,7 @@
       </h2>
       <div class="personality-contents slide-in-to-top">
         <img src="https://firebasestorage.googleapis.com/v0/b/my-portfolio-60bc9.appspot.com/o/about%2Fhideo.jpg?alt=media&token=a78d4f93-d9f8-4053-abce-08b0d852b2d4">
-      </div>
-      <div class="personality-contents slide-in-to-top">
-        <span>{{ personality }}</span>
+        <p>{{ personality }}</p>
       </div>
       <h2 class="contents-title slide-in-left">
         Skills

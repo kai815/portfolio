@@ -14,7 +14,7 @@
         {{ title }}
       </h2>
       <div class="works-contents slide-in-to-top">
-            <nuxt-link class="work-item" v-for="work in orderdWorks" :key="work.id" :to="`works/${work.number}`">
+            <nuxt-link class="work-item" v-for="work in orderdWorks" :key="work.id" :to="`/works/${work.number}`">
               <img :src="work.imageUrl">
               <div class="work-item-mask">
                 >>View More ...

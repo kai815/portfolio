@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="form-main">
     <!-- ログイン中に表示される画面 -->
     <div v-if="isAuthenticated">
       {{ user.email }}でログイン中です<br>
@@ -12,13 +12,14 @@
       </nuxt-link>
     </div>
     <!-- ログインしていない時に表示される画面 -->
-    <div v-else>
-      メール<br>
-      <input v-model="email" type="text"><br>
-      パスワード<br>
-      <input v-model="password" type="password"><br>
-      <button @click="login">
-        ログイン
+    <div v-else class="form-contents">
+      <h3 class="form-title">Login</h3>
+      <p class="form-item-text">Eamil</p>
+      <p class="form-item-text"><input class="form-item-input" v-model="email" type="text"></p>
+      <p class="form-item-text">Password</p>
+      <p><input class="form-item-input" v-model="password" type="password"></p>
+      <button class="form-button" @click="login">
+        Login
       </button>
     </div>
   </div>
@@ -28,6 +29,7 @@
 import { mapActions, mapState, mapGetters } from 'vuex'
 import firebase from '~/plugins/firebase'
 export default {
+  layout: 'admin',
   data() {
     return {
       email: '',
@@ -66,3 +68,45 @@ export default {
   }
 }
 </script>
+<style>
+.form-main {
+  background-color: #B1C3E5;
+  width: 100%;
+  height: 100vh;
+  padding-top: 10vh;
+}
+.form-contents {
+  background-color: #E6EAFB;
+  margin: auto;
+  padding: 20px;
+  width: 50%;
+  height: 50%;
+  /* position: absolute;
+  top: 10%;
+  left: auto; */
+}
+
+.form-title {
+  text-align: center;
+  font-size: 5vh;
+  color:
+}
+.form-item-text {
+  color:#84898C;
+  margin-bottom: 2px;
+}
+.form-item-input {
+  background-color:#F3F8FE;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
+}
+.form-button {
+  background-color: #153297;
+  color: #FFF;
+  padding: 3px 30px;
+  width: 100%;
+  font-size: 4vh;
+  margin-top: 10px
+}
+</style>

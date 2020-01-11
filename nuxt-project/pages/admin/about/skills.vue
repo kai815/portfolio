@@ -19,12 +19,13 @@
       </form>
     </section>
     <section class="contents">
-      <table>
+      <table class="admin-skill-contents">
         <thead>
           <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Disciption</th>
+            <th class="admin-skill-contents__th">No</th>
+            <th class="admin-skill-contents__th">Name</th>
+            <th class="admin-skill-contents__th">Disciption</th>
+            <th class="admin-skill-contents__th">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -40,11 +41,26 @@
     </section>
   </div>
 </template>
+<style>
+.admin-skill-contents{
+  border-collapse: separate;
+  border-spacing:2px 1px;
+  margin:0 auto;
+}
+.admin-skill-contents__th{
+  color: #fff;
+  background: #005ab3;
+  border-radius: 1px;
+  padding: 5px;
+  white-space: nowrap;
+}
+</style>
 <script>
 import { mapGetters } from 'vuex'
 import skillsTable from '~/components/SkillsTable.vue'
 
 export default {
+  layout: 'admin',
   components: {
     skillsTable
   },
@@ -84,7 +100,7 @@ export default {
       this.form = false
     },
     showForm() {
-      this.form = true
+      this.form = !this.form
     }
   }
 }

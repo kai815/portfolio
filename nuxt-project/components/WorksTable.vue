@@ -1,35 +1,35 @@
 <template>
   <tr>
-    <td>
+    <td class="admin-work-contents__td admin-work-contents__td__nowrap">
       {{ work.number }}
     </td>
-    <td v-if="!isEditableTitle" @dblclick="isEditableTitle = true">
+    <td class="admin-work-contents__td admin-work-contents__td__nowrap" v-if="!isEditableTitle" @dblclick="isEditableTitle = true">
       {{ work.title }}
     </td>
     <td v-else>
-      <input :value="work.title" type="text" @blur="updateTitle($event.target.value, work.id)">
+      <input class="admin-work-contents__td__input" :value="work.title" type="text" @blur="updateTitle($event.target.value, work.id)">
     </td>
-    <td v-if="!isEditableImageUrl" @dblclick="isEditableImageUrl = true">
+    <td class="admin-work-contents__td admin-work-contents__td__nowrap" v-if="!isEditableImageUrl" @dblclick="isEditableImageUrl = true">
       <img :src="work.imageUrl" class="img">
     </td>
     <td v-else>
-      <input :value="work.imageUrl" type="text" @blur="updateImageUrl($event.target.value, work.id)">
+      <input class="admin-work-contents__td__input" :value="work.imageUrl" type="text" @blur="updateImageUrl($event.target.value, work.id)">
     </td>
-    <td v-if="!isEditableLinkUrl" @dblclick="isEditableImageUrl = true">
-      <a :href="work.linkUrl" target="_blank">{{ work.title }}</a>
+    <td class="admin-work-contents__td admin-work-contents__td__nowrap" v-if="!isEditableLinkUrl" @dblclick="isEditableLinkUrl = true">
+      <a :href="work.linkUrl" target="_blank">{{ work.linkUrl }}</a>
     </td>
     <td v-else>
-      <input :value="work.linkUrl" type="text" @blur="updateLinkUrl($event.target.value, work.id)">
+      <input class="admin-work-contents__td__input" :value="work.linkUrl" type="text" @blur="updateLinkUrl($event.target.value, work.id)">
     </td>
-    <td v-if="!isEditableDisc" @dblclick="isEditableDisc = true">
+    <td class="admin-work-contents__td" v-if="!isEditableDisc" @dblclick="isEditableDisc = true">
       {{ work.discription }}
     </td>
     <td v-else>
-      <input :value="work.discription" type="text" @blur="updateDisc($event.target.value, work.id)">
+      <textarea class="admin-work-contents__td__input" :value="work.discription" type="text" @blur="updateDisc($event.target.value, work.id)"></textarea>
     </td>
-    <td>
-      <button @click="remove(work.id)">
-        削除
+    <td class="admin-work-contents__td admin-work-contents__td__nowrap">
+      <button class="delete-button" @click="remove(work.id)">
+        <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'times']"/>
       </button>
     </td>
   </tr>
@@ -38,6 +38,31 @@
 .img {
   width: 50px;
   height: 30px;
+}
+.admin-work-contents__td{
+  color: #000000;
+  border-bottom:0.5px solid #ccc;
+  background-color: #fafcfc;
+  border-radius: 1px;
+  padding: 5px;
+}
+.admin-work-contents__td__nowrap {
+  white-space: nowrap;
+}
+.admin-work-contents__td__input{
+  width: 100%;
+  padding:5px;
+  box-sizing:border-box;
+}
+.delete-button{
+  background-color: rgb(91, 91, 91);
+  color: #FFFFFF;
+  border-radius: 50%;
+}
+.delete-button:hover{
+  background-color: rgb(235, 11, 11);
+  color: #FFFFFF;
+  border-radius: 50%;
 }
 </style>
 

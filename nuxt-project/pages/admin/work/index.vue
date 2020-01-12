@@ -38,14 +38,15 @@
       </form>
     </section>
     <section class="contents">
-      <table>
+      <table class="admin-works-contents">
         <thead>
           <tr>
-            <th>No</th>
-            <th>Title</th>
-            <th>Image</th>
-            <th>Url</th>
-            <th>Disciption</th>
+            <th class="admin-works-contents__th">No</th>
+            <th class="admin-works-contents__th">Title</th>
+            <th class="admin-works-contents__th">Image</th>
+            <th class="admin-works-contents__th">Url</th>
+            <th class="admin-works-contents__th">Disciption</th>
+            <th class="admin-works-contents__th">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -61,11 +62,26 @@
     </section>
   </div>
 </template>
+<style>
+.admin-works-contents{
+  border-collapse: separate;
+  border-spacing:2px 1px;
+  margin:0 auto;
+}
+.admin-works-contents__th{
+  color: #fff;
+  background: #005ab3;
+  border-radius: 1px;
+  padding: 5px;
+  white-space: nowrap;
+}
+</style>
 <script>
 import { mapGetters } from 'vuex'
 import worksTable from '~/components/WorksTable.vue'
 
 export default {
+  layout: 'admin',
   components: {
     worksTable
   },
@@ -89,7 +105,7 @@ export default {
     ...mapGetters('works', ['orderdWorks'])
   },
   created() {
-    this.$store.dispatch('works/init')
+    this.$store.dispatch('works/getAll')
   },
   mounted() {
     setTimeout(() => {
@@ -120,10 +136,10 @@ export default {
       this.$store.dispatch('works/imageUpload', this.uploadImage)
     },
     showForm() {
-      this.form = true
+      this.form = !this.form
     },
     showImageForm() {
-      this.imageForm = true
+      this.imageForm = !this.imageForm
     }
   }
 }

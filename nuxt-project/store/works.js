@@ -40,7 +40,6 @@ export const actions = {
 
   updateTitle: firestoreAction((context, work) => {
     /* eslint-disable no-console */
-    console.log(work)
     worksRef.doc(work.id).update({
       title: work.title
     }).then((ref) => {

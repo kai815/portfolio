@@ -13,9 +13,9 @@
       <h2 class="contents-title slide-in-left">
         Personality
       </h2>
-      <div class="personality-contents slide-in-to-top">
-        <img src="https://firebasestorage.googleapis.com/v0/b/my-portfolio-60bc9.appspot.com/o/about%2Fhideo.jpg?alt=media&token=a78d4f93-d9f8-4053-abce-08b0d852b2d4">
-        <p>{{ personality }}</p>
+      <div v-for="personality in orderdPersonality" :key="personality.id" class="personality-contents slide-in-to-top">
+        <img :src="personality.imageUrl">
+        <p>{{ personality.discription }}</p>
       </div>
       <h2 class="contents-title slide-in-left">
         Skills
@@ -219,15 +219,16 @@ export default {
       title: 'About',
       subtitle: 'My skills and personality',
       statusSkillDiscription: false,
-      skillDisciption: '',
-      personality: '営業職・Webライターを経て2018年2月よりWebエンジニアとして働き始める。1社目で働いた会社ではサーバサイドからフロントエンドまで幅広く開発に携わる。現在は特にサービスやWebサイトの見た目をいじるのが好きで、フロントエンド開発、さらにはUI/UXデザインに興味がある。'
+      skillDisciption: ''
     }
   },
   created() {
     this.$store.dispatch('skills/init')
+    this.$store.dispatch('personality/getAll')
   },
   computed: {
-    ...mapGetters('skills', ['orderdSkills'])
+    ...mapGetters('skills', ['orderdSkills']),
+    ...mapGetters('personality', ['orderdPersonality'])
   },
   methods: {
     showSkillDiscription(discription) {

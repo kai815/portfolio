@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="main">
     <main>
       <nuxt />
     </main>
   </div>
 </template>
 <style>
-html{
+html, body, main{
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
@@ -24,5 +24,17 @@ html{
 *:after {
   box-sizing: border-box;
   margin: 0;
+}
+#__nuxt{
+  width: 100%;
+  height: 100%;
+}
+#__layout{
+  width: 100%;
+  height: 100%;
+}
+.main {
+  height: 100%;
+  width:100%;
 }
 </style>

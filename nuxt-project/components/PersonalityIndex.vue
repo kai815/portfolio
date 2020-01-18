@@ -1,11 +1,10 @@
 <template>
   <div>
-    <h1>Personality管理画面</h1>
-    <button @click="showForm">
-      Personalityの追加
+    <button class="plus-button" @click="showForm">
+      <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'plus']"/>
     </button>
-    <button @click="showImageForm">
-      画像の追加
+    <button class="image-button" @click="showImageForm">
+      <font-awesome-icon class="fa-1x fa-fw"  :icon="['fas', 'image']"/>
     </button>
     <section v-if="form" class="post-form">
       <form>
@@ -75,6 +74,17 @@
 }
 .th__width_85 {
     width: 85%;
+}
+.plus-button{
+  color: #0C8AFF;
+  margin: 0px 5px 10px 0px;
+  outline: none;
+}
+
+.image-button{
+  color: #0C8AFF;
+  margin: 0px 5px 10px 0px;
+  outline: none;
 }
 </style>
 <script>

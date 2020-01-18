@@ -1,8 +1,7 @@
 <template>
   <div>
-    <h1>Skills管理画面</h1>
-    <button @click="showForm">
-      +
+    <button class="plus-button" @click="showForm">
+      <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'plus']"/>
     </button>
     <section v-if="form" class="post-form">
       <form>
@@ -54,6 +53,13 @@
   padding: 5px;
   white-space: nowrap;
 }
+
+.plus-button{
+  color: #0C8AFF;
+  margin: 0px 5px 10px 0px;
+  outline: none;
+}
+
 </style>
 <script>
 import { mapGetters } from 'vuex'

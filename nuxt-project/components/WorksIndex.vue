@@ -1,11 +1,10 @@
 <template>
   <div>
-    <h1>Works管理画面</h1>
-    <button @click="showForm">
-      Workの追加
+    <button class="plus-button" @click="showForm">
+      <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'plus']"/>
     </button>
-    <button @click="showImageForm">
-      画像の追加
+    <button class="image-button" @click="showImageForm">
+      <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'image']"/>
     </button>
     <section v-if="form" class="post-form">
       <form>
@@ -74,6 +73,18 @@
   border-radius: 1px;
   padding: 5px;
   white-space: nowrap;
+}
+
+.plus-button{
+  color: #0C8AFF;
+  margin: 0px 5px 10px 0px;
+  outline: none;
+}
+
+.image-button{
+  color: #0C8AFF;
+  margin: 0px 5px 10px 0px;
+  outline: none;
 }
 </style>
 <script>

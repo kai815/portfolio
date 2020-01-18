@@ -9,6 +9,11 @@
         <li>
           <button class="sidevar__menu__item" :class="{'sidevar__menu__item__active': isActiveRow === '2'}" @click="changeActiveRow('2')">About</button>
         </li>
+        <li>
+          <button class="sidevar__menu__item sidevar__menu__item__bottom" @click="logout">
+            Logout
+          </button>
+        </li>
       </ul>
     </div>
     <div class="admin__main">
@@ -89,6 +94,8 @@ a {
   top: 50%;
   margin-top: -8px;
 }
+/* .sidevar__menu__item__bottom {
+} */
 .admin__main {
   height: 100%;
   width:90%;
@@ -133,7 +140,8 @@ a {
 }
 </style>
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapState, mapGetters } from 'vuex'
+import firebase from '~/plugins/firebase'
 import worksIndex from '~/components/WorksIndex.vue'
 import skillsIndex from '~/components/SkillsIndex.vue'
 import personalityIndex from '~/components/PersonalityIndex.vue'
@@ -154,7 +162,7 @@ export default {
   },
   computed: {
     ...mapGetters('auth', ['isAuthenticated']),
-    ...mapGetters('skills', ['orderdskills'])
+    ...mapState('auth', ['user'])
   },
   mounted() {
     setTimeout(() => {
@@ -166,12 +174,22 @@ export default {
     }, 0)
   },
   methods: {
+    ...mapActions('auth', ['setUser']),
     changeActiveRow(num) {
       this.isActiveRow = num
       this.isActiveColumn = '1'
     },
     changeActiveColumn(num) {
       this.isActiveColumn = num
+    },
+    logout() {
+      firebase.auth().signOut()
+        .then(() => {
+          this.setUser(null)
+          this.$router.push('/admin/login')
+        }).catch((error) => {
+          alert(error)
+        })
     }
   }
 }

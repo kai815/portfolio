@@ -1,18 +1,7 @@
 <template>
   <div class="form-main">
-    <!-- ログイン中に表示される画面 -->
-    <div v-if="isAuthenticated">
-      {{ user.email }}でログイン中です<br>
-      <button @click="logout">
-        ログアウト
-      </button>
-      <br>
-      <nuxt-link to="/admin">
-        管理画面へ
-      </nuxt-link>
-    </div>
     <!-- ログインしていない時に表示される画面 -->
-    <div v-else class="form-contents">
+    <div v-if="!isAuthenticated" class="form-contents">
       <h3 class="form-title">Login</h3>
       <p class="form-item-text">Eamil</p>
       <p class="form-item-text"><input class="form-item-input" v-model="email" type="text"></p>
@@ -42,8 +31,10 @@ export default {
   },
   mounted() {
     firebase.auth().onAuthStateChanged((user) => {
-      const { uid, email, displayName } = user
-      this.setUser({ uid, email, displayName })
+      if (user) {
+        const { uid, email, displayName } = user
+        this.setUser({ uid, email, displayName })
+      }
     })
   },
   methods: {
@@ -52,7 +43,7 @@ export default {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password)
         .then((user) => {
           // ログインしたら飛ぶページを指定
-          // this.$router.push("/member-page")
+          this.$router.push('/admin/')
         }).catch((error) => {
           alert(error)
         })

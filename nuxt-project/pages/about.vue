@@ -14,7 +14,9 @@
         Personality
       </h2>
       <div v-for="personality in orderdPersonality" :key="personality.id" class="personality-contents slide-in-to-top">
-        <img :src="personality.imageUrl">
+        <div class="personality-contents__img">
+          <img :src="personality.imageUrl">
+        </div>
         <div class="personality-contents__discription">
           <p>{{ personality.discription }}</p>
         </div>
@@ -176,21 +178,26 @@
   padding: 5px 50px;
   text-align: left;
   margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.personality-contents__img {
+  width: 50%;
+  height: auto;
 }
 
-.personality-contents > img {
-  width: 50%;
+.personality-contents__img > img {
+  width: 100%;
   height: auto;
 }
 .personality-contents__discription{
   width: 50%;
   height: auto;
-  float: right;
   padding-left:50px;
-  line-height: 3;
-  vertical-align: middle;
+  display: flex;
+  align-items:center;
+  line-height: 2.5;
 }
-
 /* タブレット or 狭目のブラウザ*/
 @media (max-width: 1030px) and (min-width: 768px) {
   .personality-contents__discription{
@@ -199,13 +206,12 @@
 }
 /* スマホ時 */
 @media (max-width: 767px) {
-  .personality-contents > img {
+  .personality-contents__img {
     width: 100%;
     height: auto;
   }
   .personality-contents__discription{
     width: 100%;
-    float: none;
     padding-left:0px;
     line-height: 1.5;
   }

@@ -15,17 +15,22 @@ export const actions = {
     bindFirestoreRef('personality', personalityRef)
   }),
   add: firestoreAction((context, personality) => {
-    if (personality.discription.trim()) {
-      personalityRef.doc().set({
-        imageUrl: personality.imageUrl,
-        discription: personality.discription,
-        number: personality.number,
-        created: firebase.firestore.FieldValue.serverTimestamp()
-      }).then((ref) => {
-      }).catch((err) => {
-        alert(err)
+    const storageRef = storage.ref().child('about/personality/' + personality.image.name)
+    storageRef.put(personality.image).then(function (snapshot) {
+      storageRef.getDownloadURL().then(function (imageUrl) {
+        if (personality.discription.trim()) {
+          personalityRef.doc().set({
+            imageUrl: imageUrl,
+            discription: personality.discription,
+            number: personality.number,
+            created: firebase.firestore.FieldValue.serverTimestamp()
+          }).then((ref) => {
+          }).catch((err) => {
+            alert(err)
+          })
+        }
       })
-    }
+    })
   }),
   remove: firestoreAction((context, id) => {
     personalityRef.doc(id).delete()
@@ -47,14 +52,7 @@ export const actions = {
     }).catch((err) => {
       alert(err)
     })
-  }),
-  imageUpload: (context, image) => {
-    /* eslint-disable no-console */
-    const storageRef = storage.ref().child('about/personality/' + image.name)
-    storageRef.put(image).then(function (snapshot) {
-      // console.log('Uploaded a blob or file!')
-    })
-  }
+  })
 }
 
 export const getters = {

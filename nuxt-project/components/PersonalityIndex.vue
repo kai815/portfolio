@@ -1,26 +1,18 @@
 <template>
   <div>
     <button class="plus-button" @click="showForm">
-      <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'plus']"/>
-    </button>
-    <button class="image-button" @click="showImageForm">
-      <font-awesome-icon class="fa-1x fa-fw"  :icon="['fas', 'image']"/>
+      <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'plus']" />
     </button>
     <section v-if="form" class="post-form">
-      <form>
-        <dl>
-          <dt><span>Personality説明</span></dt>
-          <dd><textarea v-model="newPersonality.discription" name="personality-discription" placeholder="貝塚秀雄のポートフォリをサイトを作成しました。" /></dd>
-          <dt><span>Personality画像Url</span></dt>
-          <dd><input v-model="newPersonality.imageUrl" type="text" placeholder="HideoKaizuka" name="personality-image-url"></dd>
-          <dt><span>Personalityのリンク先Url</span></dt>
-          <dt><span>PersonalityNumber</span></dt>
-          <dd><input v-model="newPersonality.number" type="number" name="personality-number"></dd>
-          <button @click="add">
-            保存
-          </button>
-        </dl>
-      </form>
+      <adminForm
+        :formTitle="formTitle"
+        :hasName="hasName"
+        :hasTitle="hasTitle"
+        :hasUrl="hasUrl"
+        :hasImage="hasImage"
+        @hide="hideForm"
+        @save="add"
+      />
     </section>
     <section v-if="imageForm" class="post-form">
       <form>
@@ -37,10 +29,18 @@
       <table class="admin-personalitys-contents">
         <thead>
           <tr>
-            <th class="admin-personalitys-contents__th th__width_5">No</th>
-            <th class="admin-personalitys-contents__th th__width_5">Image</th>
-            <th class="admin-personalitys-contents__th th__width_85">Disciption</th>
-            <th class="admin-personalitys-contents__th th__width_5">Action</th>
+            <th class="admin-personalitys-contents__th th__width_5">
+              No
+            </th>
+            <th class="admin-personalitys-contents__th th__width_5">
+              Image
+            </th>
+            <th class="admin-personalitys-contents__th th__width_85">
+              Disciption
+            </th>
+            <th class="admin-personalitys-contents__th th__width_5">
+              Action
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -90,22 +90,23 @@
 <script>
 import { mapGetters } from 'vuex'
 import personalityTable from '~/components/PersonalityTable.vue'
+import adminForm from '~/components/adminForm.vue'
 
 export default {
   layout: 'admin',
   components: {
-    personalityTable
+    personalityTable,
+    adminForm
   },
   data() {
     return {
       loaded: false,
       form: false,
-      imageForm: false,
-      uploadImage: '',
-      newPersonality: {
-        imageUrl: '',
-        discription: ''
-      }
+      formTitle: 'Personality',
+      hasName: false,
+      hasTitle: false,
+      hasUrl: false,
+      hasImage: true
     }
   },
   computed: {
@@ -125,27 +126,15 @@ export default {
     }, 0)
   },
   methods: {
-    add() {
-      this.$store.dispatch('personality/add', this.newPersonality)
-      this.newPersonality.imageUrl = ''
-      this.newPersonality.discription = ''
-      this.newPersonality.number = ''
+    add(formData) {
+      this.$store.dispatch('personality/add', formData)
       this.form = false
     },
-    selectImage(event) {
-      const files = event.target.files
-      this.uploadImage = files[0]
-    },
-    imageUpload(e) {
-      /* eslint-disable no-console */
-      e.preventDefault()
-      this.$store.dispatch('personality/imageUpload', this.uploadImage)
-    },
     showForm() {
-      this.form = !this.form
+      this.form = true
     },
-    showImageForm() {
-      this.imageForm = !this.imageForm
+    hideForm() {
+      this.form = false
     }
   }
 }

@@ -3,21 +3,21 @@
     <td class="admin-skill-contents__td admin-skill-contents__td_nowrap">
       {{ skill.number }}
     </td>
-    <td class="admin-skill-contents__td admin-skill-contents__td_nowrap" v-if="!isEditableName" @dblclick="isEditableName = true">
+    <td v-if="!isEditableName" class="admin-skill-contents__td admin-skill-contents__td_nowrap" @dblclick="isEditableName = true">
       {{ skill.name }}
     </td>
     <td v-else>
       <input class="admin-skill-contents__td__input" :value="skill.name" type="text" @blur="updateName($event.target.value, skill.id)">
     </td>
-    <td class="admin-skill-contents__td" v-if="!isEditableDisc" @dblclick="isEditableDisc = true">
+    <td v-if="!isEditableDisc" class="admin-skill-contents__td" @dblclick="isEditableDisc = true">
       {{ skill.discription }}
     </td>
     <td v-else>
-      <textarea class="admin-skill-contents__td__input" :value="skill.discription" type="text" @blur="updateDisc($event.target.value, skill.id)"></textarea>
+      <textarea class="admin-skill-contents__td__input" :value="skill.discription" type="text" @blur="updateDisc($event.target.value, skill.id)" />
     </td>
     <td class="admin-skill-contents__td">
       <button class="delete-button" @click="remove(skill.id)">
-        <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'times']"/>
+        <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'times']" />
       </button>
     </td>
   </tr>

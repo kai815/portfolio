@@ -1,30 +1,34 @@
 <template>
   <div>
     <button class="plus-button" @click="showForm">
-      <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'plus']"/>
+      <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'plus']" />
     </button>
     <section v-if="form" class="post-form">
-      <form>
-        <dl>
-          <dt><span>Skill名</span></dt>
-          <dd><input v-model="newSkill.name" type="text" placeholder="JavaScript" name="skill-name"></dd>
-          <dt><span>Skill詳細</span></dt>
-          <dd><textarea v-model="newSkill.discription" name="skill-discription" placeholder="2年ほど実務経験があります" /></dd>
-          <dd><input v-model="newSkill.number" type="number" name="skill-number"></dd>
-          <button @click="add">
-            保存
-          </button>
-        </dl>
-      </form>
+      <adminForm
+        :formTitle="formTitle"
+        :hasName="hasName"
+        :hasTitle="hasTitle"
+        :hasUrl="hasUrl"
+        :hasImage="hasImage"
+        @hide="hideForm"
+        @save="add" />
     </section>
     <section class="contents">
       <table class="admin-skill-contents">
         <thead>
           <tr>
-            <th class="admin-skill-contents__th">No</th>
-            <th class="admin-skill-contents__th">Name</th>
-            <th class="admin-skill-contents__th">Disciption</th>
-            <th class="admin-skill-contents__th">Action</th>
+            <th class="admin-skill-contents__th">
+              No
+            </th>
+            <th class="admin-skill-contents__th">
+              Name
+            </th>
+            <th class="admin-skill-contents__th">
+              Disciption
+            </th>
+            <th class="admin-skill-contents__th">
+              Action
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -40,7 +44,7 @@
     </section>
   </div>
 </template>
-<style>
+<style scoped>
 .admin-skill-contents{
   border-collapse: separate;
   border-spacing:2px 1px;
@@ -60,25 +64,85 @@
   outline: none;
 }
 
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.form-contents {
+  background-color: #E6EAFB;
+  margin: auto;
+  padding: 20px;
+  width: 50%;
+  height: 50%;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 5vh;
+}
+
+.form-item-text {
+  color:#84898C;
+  margin-bottom: 2px;
+}
+.form-item-input {
+  background-color:#F3F8FE;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
+}
+.form-button__mini {
+  background-color: #153297;
+  color: #FFF;
+  padding: 3px 30px;
+  width: 30%;
+  font-size: 4vh;
+  margin-top: 10px;
+}
+
+.form-button__mini__cancel {
+  background-color: #A6B1BA;
+  color: #FFF;
+  padding: 3px 30px;
+  width: 30%;
+  font-size: 4vh;
+  margin-top: 10px;
+}
+
 </style>
 <script>
 import { mapGetters } from 'vuex'
 import skillsTable from '~/components/SkillsTable.vue'
+import adminForm from '~/components/adminForm.vue'
 
 export default {
   layout: 'admin',
   components: {
-    skillsTable
+    skillsTable,
+    adminForm
   },
   data() {
     return {
       loaded: false,
       form: false,
-      newSkill: {
-        name: '',
-        discription: '',
-        number: ''
-      }
+      formTitle: 'Skill',
+      hasName: true,
+      hasTitle: false,
+      hasUrl: false,
+      hasImage: false
     }
   },
   computed: {
@@ -98,15 +162,15 @@ export default {
     }, 0)
   },
   methods: {
-    add() {
-      this.$store.dispatch('skills/add', this.newSkill)
-      this.newSkill.name = ''
-      this.newSkill.discription = ''
-      this.newSkill.number = ''
+    add(formData) {
+      this.$store.dispatch('skills/add', formData)
       this.form = false
     },
     showForm() {
-      this.form = !this.form
+      this.form = true
+    },
+    hideForm() {
+      this.form = false
     }
   }
 }

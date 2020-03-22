@@ -20,19 +20,25 @@ export const actions = {
     bindFirestoreRef('works', worksRef.where('number', '==', number))
   }),
   add: firestoreAction((context, work) => {
-    if (work.title.trim()) {
-      worksRef.doc().set({
-        title: work.title,
-        imageUrl: work.imageUrl,
-        linkUrl: work.linkUrl,
-        discription: work.discription,
-        number: work.number,
-        created: firebase.firestore.FieldValue.serverTimestamp()
-      }).then((ref) => {
-      }).catch((err) => {
-        alert(err)
+    /* eslint-disable no-console */
+    const storageRef = storage.ref().child('works/' + work.image.name)
+    storageRef.put(work.image).then(function (snapshot) {
+      storageRef.getDownloadURL().then(function (imageurl) {
+        if (work.title.trim()) {
+          worksRef.doc().set({
+            title: work.title,
+            imageUrl: imageurl,
+            linkUrl: work.url,
+            discription: work.discription,
+            number: work.number,
+            created: firebase.firestore.FieldValue.serverTimestamp()
+          }).then((ref) => {
+          }).catch((err) => {
+            alert(err)
+          })
+        }
       })
-    }
+    })
   }),
   remove: firestoreAction((context, id) => {
     worksRef.doc(id).delete()
@@ -73,14 +79,7 @@ export const actions = {
     }).catch((err) => {
       alert(err)
     })
-  }),
-  imageUpload: (context, image) => {
-    /* eslint-disable no-console */
-    const storageRef = storage.ref().child('works/' + image.name)
-    storageRef.put(image).then(function (snapshot) {
-      // console.log('Uploaded a blob or file!')
-    })
-  }
+  })
 }
 
 export const getters = {

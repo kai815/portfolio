@@ -7,7 +7,11 @@
           Skills管理画面へ
         </nuxt-link>
       </li>
-      <li><nuxt-link to="/admin/about/personality">Personality管理画面へ</nuxt-link></li>
+      <li>
+        <nuxt-link to="/admin/about/personality">
+          Personality管理画面へ
+        </nuxt-link>
+      </li>
     </ul>
   </div>
 </template>

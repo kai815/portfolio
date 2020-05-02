@@ -2,15 +2,15 @@
   <div class="header-nav">
     <header>
       <div class="header-nav-label fixed" @click="openNavigation">
-        <font-awesome-icon class="fa-2x" :icon="['fas', 'bars']"/>
+        <font-awesome-icon class="fa-2x" :icon="['fas', 'bars']" />
       </div>
-      <nav class="nav fixed" :class="{ 'nav-open' : navigationOpen }" >
+      <nav class="nav fixed" :class="{ 'nav-open' : navigationOpen }">
         <div class="close-icon" :class="{ 'fixed' : navigationOpen }" @click="closeNavigation">
-          <font-awesome-icon class="fa-1x" icon="times"/>
+          <font-awesome-icon class="fa-1x" icon="times" />
         </div>
         <ul>
           <li class="nav__item" @click="closeNavigation">
-            <nuxt-link to="/" >
+            <nuxt-link to="/">
               Top
             </nuxt-link>
           </li>

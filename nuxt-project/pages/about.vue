@@ -34,9 +34,9 @@
           @hideDiscription="hideSkillDiscription()"
         />
       </div>
-      <div v-if="statusSkillDiscription" class="personality-contents" >
+      <div v-if="statusSkillDiscription" class="personality-contents">
         <span>
-          <vue-typer :text="skillDisciption" :type-delay='65'></vue-typer>
+          <vue-typer :text="skillDisciption" :type-delay="65" />
         </span>
       </div>
       <h2 class="contents-title slide-in-left">

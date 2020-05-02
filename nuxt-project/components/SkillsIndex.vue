@@ -5,13 +5,14 @@
     </button>
     <section v-if="form" class="post-form">
       <adminForm
-        :formTitle="formTitle"
-        :hasName="hasName"
-        :hasTitle="hasTitle"
-        :hasUrl="hasUrl"
-        :hasImage="hasImage"
+        :form-title="formTitle"
+        :has-name="hasName"
+        :has-title="hasTitle"
+        :has-url="hasUrl"
+        :has-image="hasImage"
         @hide="hideForm"
-        @save="add" />
+        @save="add"
+      />
     </section>
     <section class="contents">
       <table class="admin-skill-contents">

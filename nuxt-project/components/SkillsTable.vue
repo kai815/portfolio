@@ -55,8 +55,18 @@ textarea {
 <script>
 export default {
   props: {
-    skill: Object,
-    index: Number
+    skill: {
+      type: Object,
+      default: () => ({
+        number: '',
+        name: '',
+        discription: '',
+        id: ''
+      }) },
+    index: {
+      type: Number,
+      default: 0
+    }
   },
   data() {
     return {

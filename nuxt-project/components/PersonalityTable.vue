@@ -60,8 +60,19 @@ textarea {
 <script>
 export default {
   props: {
-    personality: Object,
-    index: Number
+    personality: {
+      type: Object,
+      default: () => ({
+        id: '',
+        number: '',
+        imageUrl: '',
+        discription: ''
+      })
+    },
+    index: {
+      type: Number,
+      default: 0
+    }
   },
   data() {
     return {

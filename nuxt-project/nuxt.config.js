@@ -1,5 +1,4 @@
 import webpack from 'webpack'
-const pkg = require('./package')
 
 export default {
   mode: 'spa',

@@ -69,8 +69,20 @@
 <script>
 export default {
   props: {
-    work: Object,
-    index: Number
+    work: {
+      type: Object,
+      default: () => ({
+        numebr: '',
+        title: '',
+        imageUrl: '',
+        linkUrl: '',
+        discription: '',
+        id: '' })
+    },
+    index: {
+      type: Number,
+      default: 0
+    }
   },
   data() {
     return {

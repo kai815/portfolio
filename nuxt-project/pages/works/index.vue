@@ -218,11 +218,11 @@ export default {
       subtitle: 'My private works'
     }
   },
-  created() {
-    this.$store.dispatch('works/getAll')
-  },
   computed: {
     ...mapGetters('works', ['orderdWorks'])
+  },
+  created() {
+    this.$store.dispatch('works/getAll')
   }
 }
 </script>

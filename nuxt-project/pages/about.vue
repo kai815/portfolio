@@ -251,13 +251,13 @@ export default {
       skillDisciption: ''
     }
   },
-  created() {
-    this.$store.dispatch('skills/init')
-    this.$store.dispatch('personality/getAll')
-  },
   computed: {
     ...mapGetters('skills', ['orderdSkills']),
     ...mapGetters('personality', ['orderdPersonality'])
+  },
+  created() {
+    this.$store.dispatch('skills/init')
+    this.$store.dispatch('personality/getAll')
   },
   methods: {
     showSkillDiscription(discription) {

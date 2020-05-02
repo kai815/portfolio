@@ -195,17 +195,15 @@ export default {
       subtitle: 'My private work detail'
     }
   },
-  created() {
-    this.$store.dispatch('works/serchWorkNumber', this.$route.params.number)
-  },
   computed: {
     work() {
-      /* eslint-disable no-console */
-      // console.log('work')
-      // console.log(this.orderdWorks)
       return this.orderdWorks.find(w => w.number === this.$route.params.number)
     },
     ...mapGetters('works', ['orderdWorks'])
+  },
+  created() {
+    this.$store.dispatch('works/serchWorkNumber', this.$route.params.number)
   }
+
 }
 </script>

@@ -8,7 +8,13 @@
 <script>
 export default {
   props: {
-    skill: Object
+    skill: {
+      type: Object,
+      default: () => ({
+        name: '',
+        discription: ''
+      })
+    }
   },
   methods: {
     showDiscription() {

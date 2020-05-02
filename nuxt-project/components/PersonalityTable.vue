@@ -3,21 +3,21 @@
     <td class="admin-personality-contents__td admin-personality-contents__td__nowrap">
       {{ personality.number }}
     </td>
-    <td class="admin-personality-contents__td admin-personality-contents__td__nowrap" v-if="!isEditableImageUrl" @dblclick="isEditableImageUrl = true">
+    <td v-if="!isEditableImageUrl" class="admin-personality-contents__td admin-personality-contents__td__nowrap" @dblclick="isEditableImageUrl = true">
       <img :src="personality.imageUrl" class="img">
     </td>
     <td v-else>
       <input class="admin-personality-contents__td__input" :value="personality.imageUrl" type="text" @blur="updateImageUrl($event.target.value, personality.id)">
     </td>
-    <td class="admin-personality-contents__td" v-if="!isEditableDisc" @dblclick="isEditableDisc = true">
+    <td v-if="!isEditableDisc" class="admin-personality-contents__td" @dblclick="isEditableDisc = true">
       {{ personality.discription }}
     </td>
     <td v-else>
-      <textarea class="admin-personality-contents__td__input" :value="personality.discription" type="text" @blur="updateDisc($event.target.value, personality.id)"></textarea>
+      <textarea class="admin-personality-contents__td__input" :value="personality.discription" type="text" @blur="updateDisc($event.target.value, personality.id)" />
     </td>
     <td class="admin-personality-contents__td admin-personality-contents__td__nowrap">
       <button class="delete-button" @click="remove(personality.id)">
-        <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'times']"/>
+        <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'times']" />
       </button>
     </td>
   </tr>

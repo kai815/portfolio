@@ -11,15 +11,15 @@
     </section>
     <section v-if="work" class="sec-contents">
       <h2 class="contents-title slide-in-left">
-        {{ work.title}}
+        {{ work.title }}
       </h2>
       <div class="works-contents slide-in-to-top">
-              <img :src="work.imageUrl">
-              <p>{{ work.discription }}</p>
-              <a target="_blank" class="link-site-button" :href="work.linkUrl">See The Site</a>
-              <nuxt-link to="/works" class="link-site-button">
-                Back Works
-              </nuxt-link>
+        <img :src="work.imageUrl">
+        <p>{{ work.discription }}</p>
+        <a target="_blank" class="link-site-button" :href="work.linkUrl">See The Site</a>
+        <nuxt-link to="/works" class="link-site-button">
+          Back Works
+        </nuxt-link>
       </div>
     </section>
   </div>

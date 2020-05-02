@@ -1,12 +1,20 @@
 <template>
   <div>
     <section class="sec-contents">
-        <ul class="acount-lists">
-          <li class="acount-lists-item twitter-border twitter-color"><a href="https://twitter.com/yuruwacha" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'twitter']"/><span >Twitter</span></a></li>
-          <li class="acount-lists-item github-border github-color"><a href="https://github.com/kai815" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'github']"/><span>Github</span></a></li>
-          <li class="acount-lists-item mail-border mail-color"><a href="mailto:hideo.kaizuka815@gmail.com"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fas', 'envelope']"/><span>Mail</span></a></li>
-          <li class="acount-lists-item yuruwach-border yuruwach-color"><a href="https://yuruwacha.com/" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fas', 'pen']"/><span>Blog</span></a></li>
-        </ul>
+      <ul class="acount-lists">
+        <li class="acount-lists-item twitter-border twitter-color">
+          <a href="https://twitter.com/yuruwacha" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'twitter']" /><span>Twitter</span></a>
+        </li>
+        <li class="acount-lists-item github-border github-color">
+          <a href="https://github.com/kai815" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'github']" /><span>Github</span></a>
+        </li>
+        <li class="acount-lists-item mail-border mail-color">
+          <a href="mailto:hideo.kaizuka815@gmail.com"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fas', 'envelope']" /><span>Mail</span></a>
+        </li>
+        <li class="acount-lists-item yuruwach-border yuruwach-color">
+          <a href="https://yuruwacha.com/" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fas', 'pen']" /><span>Blog</span></a>
+        </li>
+      </ul>
     </section>
   </div>
 </template>

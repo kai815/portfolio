@@ -143,9 +143,6 @@
 @media (max-width: 767px) {
   .contents-title{font-size: 3.5vh}
 }
-.text-shadow {
-  text-shadow: 5px 5px 1px #999999, -5px -5px 1px #999999;
-}
 
 .text-left-in {
   display: inline-block;

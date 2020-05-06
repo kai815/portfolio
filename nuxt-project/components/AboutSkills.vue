@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span class="skill-name slide-in-to-top" @click="showDiscription" @mouseout="hideDiscription">
+    <span class="skill-name slide-in-to-top" @click="showDiscription">
       {{ skill.name }}
     </span>
     <span class="slide-in-to-top">/</span>
@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     showDiscription() {
-      this.$emit('showDiscription', this.skill.discription)
+      this.$emit('showDiscription', [this.skill.name, this.skill.discription])
     },
     hideDiscription() {
       this.$emit('hideDiscription')

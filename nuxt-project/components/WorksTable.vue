@@ -3,33 +3,33 @@
     <td class="admin-work-contents__td admin-work-contents__td__nowrap">
       {{ work.number }}
     </td>
-    <td class="admin-work-contents__td admin-work-contents__td__nowrap" v-if="!isEditableTitle" @dblclick="isEditableTitle = true">
+    <td v-if="!isEditableTitle" class="admin-work-contents__td admin-work-contents__td__nowrap" @dblclick="isEditableTitle = true">
       {{ work.title }}
     </td>
     <td v-else>
       <input class="admin-work-contents__td__input" :value="work.title" type="text" @blur="updateTitle($event.target.value, work.id)">
     </td>
-    <td class="admin-work-contents__td admin-work-contents__td__nowrap" v-if="!isEditableImageUrl" @dblclick="isEditableImageUrl = true">
+    <td v-if="!isEditableImageUrl" class="admin-work-contents__td admin-work-contents__td__nowrap" @dblclick="isEditableImageUrl = true">
       <img :src="work.imageUrl" class="img">
     </td>
     <td v-else>
       <input class="admin-work-contents__td__input" :value="work.imageUrl" type="text" @blur="updateImageUrl($event.target.value, work.id)">
     </td>
-    <td class="admin-work-contents__td admin-work-contents__td__nowrap" v-if="!isEditableLinkUrl" @dblclick="isEditableLinkUrl = true">
+    <td v-if="!isEditableLinkUrl" class="admin-work-contents__td admin-work-contents__td__nowrap" @dblclick="isEditableLinkUrl = true">
       <a :href="work.linkUrl" target="_blank">{{ work.linkUrl }}</a>
     </td>
     <td v-else>
       <input class="admin-work-contents__td__input" :value="work.linkUrl" type="text" @blur="updateLinkUrl($event.target.value, work.id)">
     </td>
-    <td class="admin-work-contents__td" v-if="!isEditableDisc" @dblclick="isEditableDisc = true">
+    <td v-if="!isEditableDisc" class="admin-work-contents__td" @dblclick="isEditableDisc = true">
       {{ work.discription }}
     </td>
     <td v-else>
-      <textarea class="admin-work-contents__td__input" :value="work.discription" type="text" @blur="updateDisc($event.target.value, work.id)"></textarea>
+      <textarea class="admin-work-contents__td__input" :value="work.discription" type="text" @blur="updateDisc($event.target.value, work.id)" />
     </td>
     <td class="admin-work-contents__td admin-work-contents__td__nowrap">
       <button class="delete-button" @click="remove(work.id)">
-        <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'times']"/>
+        <font-awesome-icon class="fa-1x fa-fw" :icon="['fas', 'times']" />
       </button>
     </td>
   </tr>
@@ -69,8 +69,20 @@
 <script>
 export default {
   props: {
-    work: Object,
-    index: Number
+    work: {
+      type: Object,
+      default: () => ({
+        numebr: '',
+        title: '',
+        imageUrl: '',
+        linkUrl: '',
+        discription: '',
+        id: '' })
+    },
+    index: {
+      type: Number,
+      default: 0
+    }
   },
   data() {
     return {

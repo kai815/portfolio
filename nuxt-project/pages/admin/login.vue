@@ -2,11 +2,19 @@
   <div class="form-main">
     <!-- ログインしていない時に表示される画面 -->
     <div v-if="!isAuthenticated" class="form-contents">
-      <h3 class="form-title">Login</h3>
-      <p class="form-item-text">Eamil</p>
-      <p class="form-item-text"><input class="form-item-input" v-model="email" type="text"></p>
-      <p class="form-item-text">Password</p>
-      <p><input class="form-item-input" v-model="password" type="password"></p>
+      <h3 class="form-title">
+        Login
+      </h3>
+      <p class="form-item-text">
+        Eamil
+      </p>
+      <p class="form-item-text">
+        <input v-model="email" class="form-item-input" type="text">
+      </p>
+      <p class="form-item-text">
+        Password
+      </p>
+      <p><input v-model="password" class="form-item-input" type="password"></p>
       <button class="form-button" @click="login">
         Login
       </button>

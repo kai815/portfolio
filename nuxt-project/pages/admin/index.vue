@@ -1,13 +1,19 @@
 <template>
   <div class="admin__contents">
     <div class="admin__sidevar">
-      <h2 class="sidevar__menu__title" >Admin</h2>
+      <h2 class="sidevar__menu__title">
+        Admin
+      </h2>
       <ul class="sidevar__menu">
         <li>
-          <button class="sidevar__menu__item" :class="{'sidevar__menu__item__active': isActiveRow === '1'}" @click="changeActiveRow('1')">Works</button>
+          <button class="sidevar__menu__item" :class="{'sidevar__menu__item__active': isActiveRow === '1'}" @click="changeActiveRow('1')">
+            Works
+          </button>
         </li>
         <li>
-          <button class="sidevar__menu__item" :class="{'sidevar__menu__item__active': isActiveRow === '2'}" @click="changeActiveRow('2')">About</button>
+          <button class="sidevar__menu__item" :class="{'sidevar__menu__item__active': isActiveRow === '2'}" @click="changeActiveRow('2')">
+            About
+          </button>
         </li>
         <li>
           <button class="sidevar__menu__item sidevar__menu__item__bottom" @click="logout">
@@ -18,21 +24,33 @@
     </div>
     <div class="admin__main">
       <ul v-if="isActiveRow === '1' " class="tab-change-button__list">
-        <li class="tab-change-button__list__item" :class="{'tab-change-button__list__item__active': isActiveColumn === '1'}"><button @click="changeActiveColumn('1')">Works</button></li>
+        <li class="tab-change-button__list__item" :class="{'tab-change-button__list__item__active': isActiveColumn === '1'}">
+          <button @click="changeActiveColumn('1')">
+            Works
+          </button>
+        </li>
       </ul>
       <ul v-else-if="isActiveRow === '2' " class="tab-change-button__list">
-        <li class="tab-change-button__list__item" :class="{'tab-change-button__list__item__active': isActiveColumn === '1'}"><button @click="changeActiveColumn('1')">Skills</button></li>
-        <li class="tab-change-button__list__item" :class="{'tab-change-button__list__item__active': isActiveColumn === '2'}"><button @click="changeActiveColumn('2')">Personality</button></li>
+        <li class="tab-change-button__list__item" :class="{'tab-change-button__list__item__active': isActiveColumn === '1'}">
+          <button @click="changeActiveColumn('1')">
+            Skills
+          </button>
+        </li>
+        <li class="tab-change-button__list__item" :class="{'tab-change-button__list__item__active': isActiveColumn === '2'}">
+          <button @click="changeActiveColumn('2')">
+            Personality
+          </button>
+        </li>
       </ul>
       <div v-if="isActiveRow === '1'" class="row-tab__active">
-        <worksIndex></worksIndex>
+        <worksIndex />
       </div>
       <div v-else-if="isActiveRow === '2'" class="row-tab__active">
         <div v-if="isActiveColumn === '1'">
-          <skillsIndex></skillsIndex>
+          <skillsIndex />
         </div>
         <div v-else-if="isActiveColumn === '2'">
-          <personalityIndex></personalityIndex>
+          <personalityIndex />
         </div>
       </div>
     </div>

@@ -1,18 +1,25 @@
 <template>
   <div>
-    <span class="skill-discription slide-in-to-top" @mouseover="showDiscription" @mouseout="hideDiscription">
-      {{ skill.name }}/
+    <span class="skill-name slide-in-to-top" @click="showDiscription">
+      {{ skill.name }}
     </span>
+    <span class="slide-in-to-top">/</span>
   </div>
 </template>
 <script>
 export default {
   props: {
-    skill: Object
+    skill: {
+      type: Object,
+      default: () => ({
+        name: '',
+        discription: ''
+      })
+    }
   },
   methods: {
     showDiscription() {
-      this.$emit('showDiscription', this.skill.discription)
+      this.$emit('showDiscription', [this.skill.name, this.skill.discription])
     },
     hideDiscription() {
       this.$emit('hideDiscription')
@@ -28,23 +35,27 @@ export default {
   }
 }
 
-.skill-discription {
+.skill-name {
   font-size: 4vh;
   color: #0e0d0d;
   word-spacing: 2px;
-  margin:20px 0px;
+  margin:3px 0px;
+  display:inline-block;
+  padding: 3px;
+  border-radius:30%;
+  transition:all 1s;
 }
 
 @media (max-width: 1030px) and (min-width: 768px) {
-  .skill-discription{font-size: 3.5vh}
+  .skill-name{font-size: 3.5vh}
 }
 /* スマホ時 */
 @media (max-width: 767px) {
-  .skill-discription{font-size: 2.5vh}
+  .skill-name{font-size: 2.5vh}
 }
-.skill-discription:hover{
-  text-shadow: 5px 5px 2px #999999;
-  font-size: 2em;
+.skill-name:hover{
+  box-shadow: 0 10px 10px #0e0d0d;
+  background-color: #DDDDDD;
 }
 
 .slide-in-to-top {

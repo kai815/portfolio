@@ -1,16 +1,16 @@
 <template>
   <div class="header-nav">
     <header>
-      <div class="header-nav-label fixed" @click="openNavigation">
-        <font-awesome-icon class="fa-2x" :icon="['fas', 'bars']"/>
-      </div>
-      <nav class="nav fixed" :class="{ 'nav-open' : navigationOpen }" >
-        <div class="close-icon" :class="{ 'fixed' : navigationOpen }" @click="closeNavigation">
-          <font-awesome-icon class="fa-1x" icon="times"/>
+      <nav class="nav fixed background-white" :class="{ 'nav-open' : navigationOpen }">
+        <div v-show="!navigationOpen" class="header-nav-label fixed" @click="openNavigation">
+          <font-awesome-icon class="fa-2x" :icon="['fas', 'bars']" />
         </div>
-        <ul>
+        <div class="close-icon" :class="{ 'fixed' : navigationOpen }" @click="closeNavigation">
+          <font-awesome-icon class="fa-1x" icon="times" />
+        </div>
+        <ul class="display-flex__justifyend">
           <li class="nav__item" @click="closeNavigation">
-            <nuxt-link to="/" >
+            <nuxt-link to="/">
               Top
             </nuxt-link>
           </li>
@@ -63,16 +63,15 @@ li {
   display: none;
   z-index: 2;
 }
-
+.background-white {
+  background-color:#FFF;
+  opacity: 0.95;
+}
 .nav {
-  display: table;
-  table-layout: fixed;
   z-index: 2;
+  width: 100%;
 }
-.nav__item {
-  display: table-cell;
-  vertical-align: middle;
-}
+
 .nav__item > a {
   display:block;
   padding: 10px;
@@ -83,6 +82,10 @@ li {
 }
 .close-icon {
   display: none;
+}
+.display-flex__justifyend {
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* スマホ時 */

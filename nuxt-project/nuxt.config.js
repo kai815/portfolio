@@ -1,4 +1,3 @@
-const pkg = require('./package')
 import webpack from 'webpack'
 
 export default {
@@ -31,11 +30,11 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: "~plugins/persistedstate.js", ssr: false },
+    { src: '~plugins/persistedstate.js', ssr: false },
     { src: '~plugins/vuetyper.js', ssr: false }
   ],
   // 環境変数
-  env:{
+  env: {
     API_KEY: process.env.API_KEY,
     AUTH_DOMAIN: process.env.AUTH_DOMAIN,
     DATABASE_URL: process.env.DATABASE_URL,
@@ -83,7 +82,7 @@ export default {
     },
     plugins: [
       new webpack.ProvidePlugin({
-        '_': 'lodash'
+        _: 'lodash'
       })
     ]
   }

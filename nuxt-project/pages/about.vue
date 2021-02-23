@@ -31,13 +31,20 @@
           :key="skill.id"
           :skill="skill"
           @showDiscription="showSkillDiscription($event)"
-          @hideDiscription="hideSkillDiscription()"
         />
-      </div>
-      <div v-if="statusSkillDiscription" class="personality-contents" >
-        <span>
-          <vue-typer :text="skillDisciption" :type-delay='65'></vue-typer>
-        </span>
+        <transition name="skill-slide">
+          <div v-show="statusSkillDiscription" class="skill-discription">
+            <div class="skill-discription__inner">
+              <span class="skill-discription__title">{{ skillName }}</span>
+              <div class="skill-discription__close" @click="hideSkillDiscription">
+                <font-awesome-icon class="fa-1x" icon="times" />
+              </div>
+            </div>
+            <p>
+              <vue-typer :text="skillDisciption" :type-delay="65" />
+            </p>
+          </div>
+        </transition>
       </div>
       <h2 class="contents-title slide-in-left">
         Contact
@@ -143,9 +150,6 @@
 @media (max-width: 767px) {
   .contents-title{font-size: 3.5vh}
 }
-.text-shadow {
-  text-shadow: 5px 5px 1px #999999, -5px -5px 1px #999999;
-}
 
 .text-left-in {
   display: inline-block;
@@ -171,6 +175,44 @@
   width: 100%;
   padding: 5px 50px;
   margin-bottom: 20px;
+  position: relative;
+}
+.skill-discription {
+  padding:10px 30px;
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 80%;
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px #0e0d0d;
+  z-index: 5;
+  background-color: #FFFFFF;
+  text-align:left;
+}
+.skill-discription__inner{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom:10px
+}
+.skill-discription__title {
+  font-weight: bold;
+  padding: 5px 5px 5px 0px;
+}
+
+.skill-discription__close{
+  display:inline-block;
+  cursor: pointer;
+  padding: 2px 5px 5px 5px;
+}
+
+.skill-slide-enter-active, .skill-slide-leave-active {
+  transition: all .3s ease;
+}
+
+.skill-slide-enter, .skill-slide-leave-to{
+  transform: translateX(10px);
+  opacity: 0;
 }
 
 .personality-contents {
@@ -248,21 +290,23 @@ export default {
       title: 'About',
       subtitle: 'My skills and personality',
       statusSkillDiscription: false,
+      skillName: '',
       skillDisciption: ''
     }
-  },
-  created() {
-    this.$store.dispatch('skills/init')
-    this.$store.dispatch('personality/getAll')
   },
   computed: {
     ...mapGetters('skills', ['orderdSkills']),
     ...mapGetters('personality', ['orderdPersonality'])
   },
+  created() {
+    this.$store.dispatch('skills/init')
+    this.$store.dispatch('personality/getAll')
+  },
   methods: {
-    showSkillDiscription(discription) {
+    showSkillDiscription(skill) {
       this.statusSkillDiscription = true
-      this.skillDisciption = discription
+      this.skillName = skill[0]
+      this.skillDisciption = skill[1]
     },
     hideSkillDiscription() {
       this.statusSkillDiscription = false

@@ -11,15 +11,15 @@
     </section>
     <section v-if="work" class="sec-contents">
       <h2 class="contents-title slide-in-left">
-        {{ work.title}}
+        {{ work.title }}
       </h2>
       <div class="works-contents slide-in-to-top">
-              <img :src="work.imageUrl">
-              <p>{{ work.discription }}</p>
-              <a target="_blank" class="link-site-button" :href="work.linkUrl">See The Site</a>
-              <nuxt-link to="/works" class="link-site-button">
-                Back Works
-              </nuxt-link>
+        <img :src="work.imageUrl">
+        <p>{{ work.discription }}</p>
+        <a target="_blank" class="link-site-button" :href="work.linkUrl">See The Site</a>
+        <nuxt-link to="/works" class="link-site-button">
+          Back Works
+        </nuxt-link>
       </div>
     </section>
   </div>
@@ -195,17 +195,15 @@ export default {
       subtitle: 'My private work detail'
     }
   },
-  created() {
-    this.$store.dispatch('works/serchWorkNumber', this.$route.params.number)
-  },
   computed: {
     work() {
-      /* eslint-disable no-console */
-      // console.log('work')
-      // console.log(this.orderdWorks)
       return this.orderdWorks.find(w => w.number === this.$route.params.number)
     },
     ...mapGetters('works', ['orderdWorks'])
+  },
+  created() {
+    this.$store.dispatch('works/serchWorkNumber', this.$route.params.number)
   }
+
 }
 </script>

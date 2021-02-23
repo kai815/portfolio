@@ -14,13 +14,13 @@
         {{ title }}
       </h2>
       <div class="works-contents slide-in-to-top">
-            <nuxt-link class="work-item" v-for="work in orderdWorks" :key="work.id" :to="`/works/${work.number}`">
-              <img :src="work.imageUrl">
-              <div class="work-item-mask">
-                >>View More ...
-              </div>
-              <span>{{ work.title }}</span>
-            </nuxt-link>
+        <nuxt-link v-for="work in orderdWorks" :key="work.id" class="work-item" :to="`/works/${work.number}`">
+          <img :src="work.imageUrl">
+          <div class="work-item-mask">
+            >>View More ...
+          </div>
+          <span>{{ work.title }}</span>
+        </nuxt-link>
       </div>
     </section>
   </div>
@@ -218,11 +218,11 @@ export default {
       subtitle: 'My private works'
     }
   },
-  created() {
-    this.$store.dispatch('works/getAll')
-  },
   computed: {
     ...mapGetters('works', ['orderdWorks'])
+  },
+  created() {
+    this.$store.dispatch('works/getAll')
   }
 }
 </script>

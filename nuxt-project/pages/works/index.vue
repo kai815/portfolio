@@ -158,7 +158,7 @@ a {
 .works-contents {
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: flex-start;
     width: 100%;
     padding: 5px 50px;
     margin-bottom: 20px;
@@ -212,7 +212,7 @@ a {
 import { mapGetters } from 'vuex'
 
 export default {
-  data() {
+  data () {
     return {
       title: 'Works',
       subtitle: 'My private works'
@@ -221,7 +221,7 @@ export default {
   computed: {
     ...mapGetters('works', ['orderdWorks'])
   },
-  created() {
+  created () {
     this.$store.dispatch('works/getAll')
   }
 }

@@ -29,6 +29,25 @@
     </header>
   </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+      navigationOpen: false
+    }
+  },
+  methods: {
+    openNavigation () {
+      this.navigationOpen = true
+    },
+    closeNavigation () {
+      setTimeout(function () {
+        this.navigationOpen = false
+      }.bind(this), 10)
+    }
+  }
+}
+</script>
 <style scoped>
 a {
   color: inherit;
@@ -137,22 +156,3 @@ li {
   color:white;
 }
 </style>
-<script>
-export default {
-  data() {
-    return {
-      navigationOpen: false
-    }
-  },
-  methods: {
-    openNavigation() {
-      this.navigationOpen = true
-    },
-    closeNavigation() {
-      setTimeout(function () {
-        this.navigationOpen = false
-      }.bind(this), 10)
-    }
-  }
-}
-</script>

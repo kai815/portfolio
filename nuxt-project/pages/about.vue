@@ -1,6 +1,5 @@
 <template>
   <div class="contents">
-    <Header />
     <section class="sec-title title-slide-in-top title-under-line">
       <h1 class="title">
         <span v-for="(t, index) in title" :key="t" :style="{animationDelay: index*150+'ms'}" class="title-text text-left-in" v-text="t" />
@@ -55,6 +54,46 @@
     </section>
   </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+import AboutSkills from '~/components/AboutSkills.vue'
+import Contact from '~/components/Contact.vue'
+
+export default {
+  components: {
+    AboutSkills,
+    Contact
+  },
+  data () {
+    return {
+      title: 'About',
+      subtitle: 'My skills and personality',
+      statusSkillDiscription: false,
+      skillName: '',
+      skillDisciption: ''
+    }
+  },
+  computed: {
+    ...mapGetters('skills', ['orderdSkills']),
+    ...mapGetters('personality', ['orderdPersonality'])
+  },
+  created () {
+    this.$store.dispatch('skills/init')
+    this.$store.dispatch('personality/getAll')
+  },
+  methods: {
+    showSkillDiscription (skill) {
+      this.statusSkillDiscription = true
+      this.skillName = skill[0]
+      this.skillDisciption = skill[1]
+    },
+    hideSkillDiscription () {
+      this.statusSkillDiscription = false
+    }
+  }
+}
+</script>
 <style scoped>
 
 @keyframes text-in {
@@ -275,42 +314,3 @@
   margin-bottom: 20px;
 }
 </style>
-<script>
-import { mapGetters } from 'vuex'
-import AboutSkills from '~/components/AboutSkills.vue'
-import Contact from '~/components/Contact.vue'
-
-export default {
-  components: {
-    AboutSkills,
-    Contact
-  },
-  data() {
-    return {
-      title: 'About',
-      subtitle: 'My skills and personality',
-      statusSkillDiscription: false,
-      skillName: '',
-      skillDisciption: ''
-    }
-  },
-  computed: {
-    ...mapGetters('skills', ['orderdSkills']),
-    ...mapGetters('personality', ['orderdPersonality'])
-  },
-  created() {
-    this.$store.dispatch('skills/init')
-    this.$store.dispatch('personality/getAll')
-  },
-  methods: {
-    showSkillDiscription(skill) {
-      this.statusSkillDiscription = true
-      this.skillName = skill[0]
-      this.skillDisciption = skill[1]
-    },
-    hideSkillDiscription() {
-      this.statusSkillDiscription = false
-    }
-  }
-}
-</script>

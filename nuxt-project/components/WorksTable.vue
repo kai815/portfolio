@@ -16,7 +16,7 @@
       <input class="admin-work-contents__td__input" :value="work.imageUrl" type="text" @blur="updateImageUrl($event.target.value, work.id)">
     </td>
     <td v-if="!isEditableLinkUrl" class="admin-work-contents__td admin-work-contents__td__nowrap" @dblclick="isEditableLinkUrl = true">
-      <a :href="work.linkUrl" target="_blank">{{ work.linkUrl }}</a>
+      <a :href="work.linkUrl" target="_blank" rel="noopener noreferrer">{{ work.linkUrl }}</a>
     </td>
     <td v-else>
       <input class="admin-work-contents__td__input" :value="work.linkUrl" type="text" @blur="updateLinkUrl($event.target.value, work.id)">
@@ -77,14 +77,15 @@ export default {
         imageUrl: '',
         linkUrl: '',
         discription: '',
-        id: '' })
+        id: ''
+      })
     },
     index: {
       type: Number,
       default: 0
     }
   },
-  data() {
+  data () {
     return {
       isEditableTitle: false,
       isEditableImageUrl: false,
@@ -93,23 +94,23 @@ export default {
     }
   },
   methods: {
-    remove(id) {
+    remove (id) {
       this.$store.dispatch('works/remove', id)
     },
-    updateTitle(title, id) {
+    updateTitle (title, id) {
       /* eslint-disable no-console */
       this.$store.dispatch('works/updateTitle', { title, id })
       this.isEditableTitle = false
     },
-    updateImageUrl(imageUrl, id) {
+    updateImageUrl (imageUrl, id) {
       this.$store.dispatch('work/updateImageUrl', { imageUrl, id })
       this.isEditableImageUrl = false
     },
-    updateLinkUrl(linkUrl, id) {
+    updateLinkUrl (linkUrl, id) {
       this.$store.dispatch('work/updateLinkUrl', { linkUrl, id })
       this.isEditableLinkUrl = false
     },
-    updateDisc(discription, id) {
+    updateDisc (discription, id) {
       this.$store.dispatch('works/updateDiscriptoin', { discription, id })
       this.isEditableDisc = false
     }

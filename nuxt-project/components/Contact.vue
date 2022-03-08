@@ -3,16 +3,16 @@
     <section class="sec-contents">
       <ul class="acount-lists">
         <li class="acount-lists-item twitter-contact">
-          <a href="https://twitter.com/yuruwacha" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'twitter']" /><span>Twitter</span></a>
+          <a href="https://twitter.com/yuruwacha" target="_blank" rel="noopener noreferrer"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'twitter']" /><span>Twitter</span></a>
         </li>
         <li class="acount-lists-item github-contact">
-          <a href="https://github.com/kai815" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'github']" /><span>Github</span></a>
+          <a href="https://github.com/kai815" target="_blank" rel="noopener noreferrer"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'github']" /><span>Github</span></a>
         </li>
         <li class="acount-lists-item mail-contact">
-          <a href="mailto:hideo.kaizuka815@gmail.com"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fas', 'envelope']" /><span>Mail</span></a>
+          <a href="mailto:hideo.kaizuka815@gmail.com" rel="noopener noreferrer"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fas', 'envelope']" /><span>Mail</span></a>
         </li>
         <li class="acount-lists-item yuruwacha-contact">
-          <a href="https://yuruwacha.com/" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fas', 'pen']" /><span>Blog</span></a>
+          <a href="https://yuruwacha.com/" target="_blank" rel="noopener noreferrer"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fas', 'pen']" /><span>Blog</span></a>
         </li>
       </ul>
     </section>

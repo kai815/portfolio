@@ -2,16 +2,16 @@
   <div>
     <section class="sec-contents">
       <ul class="acount-lists">
-        <li class="acount-lists-item twitter-border twitter-color">
+        <li class="acount-lists-item twitter-contact">
           <a href="https://twitter.com/yuruwacha" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'twitter']" /><span>Twitter</span></a>
         </li>
-        <li class="acount-lists-item github-border github-color">
+        <li class="acount-lists-item github-contact">
           <a href="https://github.com/kai815" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'github']" /><span>Github</span></a>
         </li>
-        <li class="acount-lists-item mail-border mail-color">
+        <li class="acount-lists-item mail-contact">
           <a href="mailto:hideo.kaizuka815@gmail.com"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fas', 'envelope']" /><span>Mail</span></a>
         </li>
-        <li class="acount-lists-item yuruwach-border yuruwach-color">
+        <li class="acount-lists-item yuruwacha-contact">
           <a href="https://yuruwacha.com/" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fas', 'pen']" /><span>Blog</span></a>
         </li>
       </ul>
@@ -23,8 +23,6 @@ a {
   color: inherit;
   text-decoration: none;
 }
-/* .display-flex { */
-/* } */
 
 .acount-lists{
   list-style: none;
@@ -58,50 +56,109 @@ a {
   margin-right: 10px;
   vertical-align: middle;
 }
-.twitter-border {
+.twitter-contact {
   border: #000000 solid 2px;
-}
-.twitter-color {
   color:#000000;
+  position: relative;
 }
-.twitter-color:hover {
+.twitter-contact::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
   background-color:#00BFFF;
-  border: #00BFFF solid 2px;
-  color:#FFFFFF;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform ease .3s;
 }
-.github-border {
+.twitter-contact:hover {
+  color: #fff;
+  border: #00BFFF solid 2px;
+}
+.twitter-contact:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
+}
+.github-contact {
+  border: #24292e solid 2px;
+  color:#24292e;
+  position: relative;
+}
+.github-contact::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color:#24292e;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform ease .3s;
+}
+.github-contact:hover {
+  color:#FFFFFF;
   border: #24292e solid 2px;
 }
-.github-color {
-  color:#24292e;
+.github-contact:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
 }
-.github-color:hover {
-  background-color:#24292e;
-  color:#FFFFFF;
-}
-.mail-border {
+.mail-contact {
   border: #161414 solid 2px;
-}
-.mail-color {
   color: #161414;
+  position: relative;
 }
-.mail-color:hover {
+.mail-contact::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
   background-color: #161414;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform ease .3s;
+}
+.mail-contact:hover {
+  color:#FFFFFF;
   border: #161414 solid 2px;
-  color:#FFFFFF;
 }
-.yuruwach-border {
+.mail-contact:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
+}
+.yuruwacha-contact {
   border: #000000 solid 2px;
-}
-.yuruwach-color {
   color: #000000;
+  position: relative;
 }
-.yuruwach-color:hover {
+.yuruwacha-contact::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
   background-color: #594321;
-  border: #594321 solid 2px;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform ease .3s;
+}
+.yuruwacha-contact:hover {
   color:#FFFFFF;
+  border: #594321 solid 2px;
+}
+.yuruwacha-contact:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
 }
 
 </style>
-<script>
-</script>

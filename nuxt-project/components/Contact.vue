@@ -5,7 +5,7 @@
         <li class="acount-lists-item twitter-contact">
           <a href="https://twitter.com/yuruwacha" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'twitter']" /><span>Twitter</span></a>
         </li>
-        <li class="acount-lists-item github-border github-color">
+        <li class="acount-lists-item github-contact">
           <a href="https://github.com/kai815" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'github']" /><span>Github</span></a>
         </li>
         <li class="acount-lists-item mail-border mail-color">
@@ -82,15 +82,31 @@ a {
   transform-origin: 0% 50%;
   transform: scaleX(1);
 }
-.github-border {
+.github-contact {
+  border: #24292e solid 2px;
+  color:#24292e;
+  position: relative;
+}
+.github-contact::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color:#24292e;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform ease .3s;
+}
+.github-contact:hover {
+  color:#FFFFFF;
   border: #24292e solid 2px;
 }
-.github-color {
-  color:#24292e;
-}
-.github-color:hover {
-  background-color:#24292e;
-  color:#FFFFFF;
+.github-contact:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
 }
 .mail-border {
   border: #161414 solid 2px;

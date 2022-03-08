@@ -9,9 +9,6 @@
       </h2>
     </section>
     <section class="sec-contents">
-      <h2 class="contents-title slide-in-left">
-        {{ title }}
-      </h2>
       <div class="works-contents slide-in-to-top">
         <nuxt-link v-for="work in orderdWorks" :key="work.id" class="work-item" :to="`/works/${work.number}`">
           <img :src="work.imageUrl">

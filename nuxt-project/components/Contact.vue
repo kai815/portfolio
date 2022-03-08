@@ -11,7 +11,7 @@
         <li class="acount-lists-item mail-contact">
           <a href="mailto:hideo.kaizuka815@gmail.com"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fas', 'envelope']" /><span>Mail</span></a>
         </li>
-        <li class="acount-lists-item yuruwach-border yuruwach-color">
+        <li class="acount-lists-item yuruwacha-contact">
           <a href="https://yuruwacha.com/" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fas', 'pen']" /><span>Blog</span></a>
         </li>
       </ul>
@@ -134,16 +134,31 @@ a {
   transform-origin: 0% 50%;
   transform: scaleX(1);
 }
-.yuruwach-border {
+.yuruwacha-contact {
   border: #000000 solid 2px;
-}
-.yuruwach-color {
   color: #000000;
+  position: relative;
 }
-.yuruwach-color:hover {
+.yuruwacha-contact::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
   background-color: #594321;
-  border: #594321 solid 2px;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform ease .3s;
+}
+.yuruwacha-contact:hover {
   color:#FFFFFF;
+  border: #594321 solid 2px;
+}
+.yuruwacha-contact:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
 }
 
 </style>

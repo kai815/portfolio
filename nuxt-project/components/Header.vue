@@ -151,19 +151,21 @@ li {
 .slide-enter-active .slide-leave-active {
   transition: all 1s ease-in-out 0s;
 }
-.nav__item{
-  position: relative;
-}
-.nav__item::before {
-  content: "";
-  width: 0;
-  height: 2px;
-  position: absolute;
-  bottom:2px;
-  background: #000000;
-  transition: width ease .3s;
-}
-.nav__item:hover::before {
-  width:100%
+@media (min-width: 767px) {
+  .nav__item{
+    position: relative;
+  }
+  .nav__item::before {
+    content: "";
+    width: 0;
+    height: 2px;
+    position: absolute;
+    bottom:2px;
+    background: #000000;
+    transition: width ease .3s;
+  }
+  .nav__item:hover::before {
+    width:100%
+  }
 }
 </style>

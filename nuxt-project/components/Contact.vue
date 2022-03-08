@@ -2,7 +2,7 @@
   <div>
     <section class="sec-contents">
       <ul class="acount-lists">
-        <li class="acount-lists-item twitter-border twitter-color">
+        <li class="acount-lists-item twitter-contact">
           <a href="https://twitter.com/yuruwacha" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'twitter']" /><span>Twitter</span></a>
         </li>
         <li class="acount-lists-item github-border github-color">
@@ -23,8 +23,6 @@ a {
   color: inherit;
   text-decoration: none;
 }
-/* .display-flex { */
-/* } */
 
 .acount-lists{
   list-style: none;
@@ -58,16 +56,31 @@ a {
   margin-right: 10px;
   vertical-align: middle;
 }
-.twitter-border {
+.twitter-contact {
   border: #000000 solid 2px;
-}
-.twitter-color {
   color:#000000;
+  position: relative;
 }
-.twitter-color:hover {
+.twitter-contact::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
   background-color:#00BFFF;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform ease .3s;
+}
+.twitter-contact:hover {
+  color: #fff;
   border: #00BFFF solid 2px;
-  color:#FFFFFF;
+}
+.twitter-contact:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
 }
 .github-border {
   border: #24292e solid 2px;
@@ -103,5 +116,3 @@ a {
 }
 
 </style>
-<script>
-</script>

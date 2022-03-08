@@ -8,7 +8,7 @@
         <li class="acount-lists-item github-contact">
           <a href="https://github.com/kai815" target="_blank"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fab', 'github']" /><span>Github</span></a>
         </li>
-        <li class="acount-lists-item mail-border mail-color">
+        <li class="acount-lists-item mail-contact">
           <a href="mailto:hideo.kaizuka815@gmail.com"><font-awesome-icon class="fa-2x fa-fw icon-margin" :icon="['fas', 'envelope']" /><span>Mail</span></a>
         </li>
         <li class="acount-lists-item yuruwach-border yuruwach-color">
@@ -108,16 +108,31 @@ a {
   transform-origin: 0% 50%;
   transform: scaleX(1);
 }
-.mail-border {
+.mail-contact {
   border: #161414 solid 2px;
-}
-.mail-color {
   color: #161414;
+  position: relative;
 }
-.mail-color:hover {
+.mail-contact::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
   background-color: #161414;
-  border: #161414 solid 2px;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform ease .3s;
+}
+.mail-contact:hover {
   color:#FFFFFF;
+  border: #161414 solid 2px;
+}
+.mail-contact:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
 }
 .yuruwach-border {
   border: #000000 solid 2px;

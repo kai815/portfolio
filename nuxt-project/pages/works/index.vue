@@ -1,6 +1,5 @@
 <template>
   <div class="contents">
-    <Header />
     <section class="sec-title title-slide-in-top title-under-line">
       <h1 class="title">
         <span v-for="(t, index) in title" :key="t" :style="{animationDelay: index*150+'ms'}" class="title-text text-left-in" v-text="t" />
@@ -25,6 +24,24 @@
     </section>
   </div>
 </template>
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  data () {
+    return {
+      title: 'Works',
+      subtitle: 'My private works'
+    }
+  },
+  computed: {
+    ...mapGetters('works', ['orderdWorks'])
+  },
+  created () {
+    this.$store.dispatch('works/getAll')
+  }
+}
+</script>
 <style scoped>
 a {
   color: inherit;
@@ -208,21 +225,3 @@ a {
     opacity:1;
 }
 </style>
-<script>
-import { mapGetters } from 'vuex'
-
-export default {
-  data () {
-    return {
-      title: 'Works',
-      subtitle: 'My private works'
-    }
-  },
-  computed: {
-    ...mapGetters('works', ['orderdWorks'])
-  },
-  created () {
-    this.$store.dispatch('works/getAll')
-  }
-}
-</script>

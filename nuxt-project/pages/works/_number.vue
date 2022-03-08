@@ -16,7 +16,7 @@
       <div class="works-contents slide-in-to-top">
         <img :src="work.imageUrl">
         <p>{{ work.discription }}</p>
-        <a target="_blank" class="link-site-button" :href="work.linkUrl">See The Site</a>
+        <a target="_blank" rel="noopener noreferrer" class="link-site-button" :href="work.linkUrl">See The Site</a>
         <nuxt-link to="/works" class="link-site-button">
           Back Works
         </nuxt-link>
@@ -189,19 +189,19 @@ a {
 import { mapGetters } from 'vuex'
 
 export default {
-  data() {
+  data () {
     return {
       title: 'Work',
       subtitle: 'My private work detail'
     }
   },
   computed: {
-    work() {
+    work () {
       return this.orderdWorks.find(w => w.number === this.$route.params.number)
     },
     ...mapGetters('works', ['orderdWorks'])
   },
-  created() {
+  created () {
     this.$store.dispatch('works/serchWorkNumber', this.$route.params.number)
   }
 
